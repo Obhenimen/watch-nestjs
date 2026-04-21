@@ -1,0 +1,1881 @@
+[
+  {
+    "tmdbId": 693134,
+    "name": "Dune: Part Two",
+    "type": "movie",
+    "overview": "Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, Paul endeavors to prevent a terrible future only he can foresee.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/eZ239CUp1d6OryZEBPnO2n87gMG.jpg",
+    "releaseDate": "2024-02-27",
+    "rating": 8.129,
+    "genres": [
+      "Science Fiction",
+      "Adventure"
+    ],
+    "cast": [
+      {
+        "name": "Timothée Chalamet",
+        "character": "Paul Atreides",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/axENiFIrSz5B7UuWkMT7PDe7CaO.jpg"
+      },
+      {
+        "name": "Zendaya",
+        "character": "Chani",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/3WdOloHpjtjL96uVOhFRRCcYSwq.jpg"
+      },
+      {
+        "name": "Rebecca Ferguson",
+        "character": "Jessica",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/lJloTOheuQSirSLXNA3JHsrMNfH.jpg"
+      },
+      {
+        "name": "Javier Bardem",
+        "character": "Stilgar",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/p5xjCovj1uzvA2SXrWLH78Nh1Jf.jpg"
+      },
+      {
+        "name": "Josh Brolin",
+        "character": "Gurney Halleck",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/sX2etBbIkxRaCsATyw5ZpOVMPTD.jpg"
+      }
+    ],
+    "youtubeTrailerId": "Way9Dexny3w"
+  },
+  {
+    "tmdbId": 157336,
+    "name": "Interstellar",
+    "type": "movie",
+    "overview": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/2ssWTSVklAEc98frZUQhgtGHx7s.jpg",
+    "releaseDate": "2014-11-05",
+    "rating": 8.47,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Science Fiction"
+    ],
+    "cast": [
+      {
+        "name": "Matthew McConaughey",
+        "character": "Cooper",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/lCySuYjhXix3FzQdS4oceDDrXKI.jpg"
+      },
+      {
+        "name": "Anne Hathaway",
+        "character": "Brand",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/s6tflSD20MGz04ZR2R1lZvhmC4Y.jpg"
+      },
+      {
+        "name": "Michael Caine",
+        "character": "Professor Brand",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/bVZRMlpjTAO2pJK6v90buFgVbSW.jpg"
+      },
+      {
+        "name": "Jessica Chastain",
+        "character": "Murph",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/lodMzLKSdrPcBry6TdoDsMN3Vge.jpg"
+      },
+      {
+        "name": "Casey Affleck",
+        "character": "Tom",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/304ilSygaCRWykoBWAL67TOw8g9.jpg"
+      }
+    ],
+    "youtubeTrailerId": "zSWdZVtXT7E"
+  },
+  {
+    "tmdbId": 27205,
+    "name": "Inception",
+    "type": "movie",
+    "overview": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
+    "releaseDate": "2010-07-15",
+    "rating": 8.4,
+    "genres": [
+      "Action",
+      "Science Fiction",
+      "Adventure"
+    ],
+    "cast": [
+      {
+        "name": "Leonardo DiCaprio",
+        "character": "Dom Cobb",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg"
+      },
+      {
+        "name": "Joseph Gordon-Levitt",
+        "character": "Arthur",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/z2FA8js799xqtfiFjBTicFYdfk.jpg"
+      },
+      {
+        "name": "Ken Watanabe",
+        "character": "Saito",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/w2t30L5Cmr34myAaUobLoSgsLfS.jpg"
+      },
+      {
+        "name": "Tom Hardy",
+        "character": "Eames",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/d81K0RH8UX7tZj49tZaQhZ9ewH.jpg"
+      },
+      {
+        "name": "Elliot Page",
+        "character": "Ariadne",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/nXO8DE4biVXY4UDYP0NdIY1zvXS.jpg"
+      }
+    ],
+    "youtubeTrailerId": "YoHD9XEInc0"
+  },
+  {
+    "tmdbId": 545611,
+    "name": "Everything Everywhere All at Once",
+    "type": "movie",
+    "overview": "An aging Chinese immigrant is swept up in an insane adventure, where she alone can save what's important to her by connecting with the lives she could have led in other universes.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/ss0Os3uWJfQAENILHZUdX8Tt1OC.jpg",
+    "releaseDate": "2022-03-24",
+    "rating": 7.72,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "cast": [
+      {
+        "name": "Michelle Yeoh",
+        "character": "Evelyn Wang",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/i6fHvGt7Rb8oVyjjdQVV6vEHB94.jpg"
+      },
+      {
+        "name": "Stephanie Hsu",
+        "character": "Joy Wang / Jobu Tupaki",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8gb3lfIHKQAGOQyeC4ynQPsCiHr.jpg"
+      },
+      {
+        "name": "Ke Huy Quan",
+        "character": "Waymond Wang",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/iestHyn7PLuVowj5Jaa1SGPboQ4.jpg"
+      },
+      {
+        "name": "James Hong",
+        "character": "Gong Gong",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/v3lfw5aHOy0paOCx6WHiSnwzbH0.jpg"
+      },
+      {
+        "name": "Jamie Lee Curtis",
+        "character": "Deirdre Beaubeirdre",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/eb0lIt32WwrjtCULe5z6l9eBf06.jpg"
+      }
+    ],
+    "youtubeTrailerId": "wxN1T1uxQ2g"
+  },
+  {
+    "tmdbId": 569094,
+    "name": "Spider-Man: Across the Spider-Verse",
+    "type": "movie",
+    "overview": "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse's very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/9xfDWXAUbFXQK585JvByT5pEAhe.jpg",
+    "releaseDate": "2023-05-31",
+    "rating": 8.332,
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "cast": [
+      {
+        "name": "Shameik Moore",
+        "character": "Miles Morales (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ovUKfVOwJ7CadEHaG3NDsfA5xRq.jpg"
+      },
+      {
+        "name": "Hailee Steinfeld",
+        "character": "Gwen Stacy (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/dxSDWkiVaC6JYjrV3XRAZI7HOSS.jpg"
+      },
+      {
+        "name": "Brian Tyree Henry",
+        "character": "Jeff Morales (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/1UgDnFt3OteCJQPiUelWzIR5bvT.jpg"
+      },
+      {
+        "name": "Luna Lauren Vélez",
+        "character": "Rio Morales (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/98BvmTJCZHx0jPv0oNcv04Jkmfb.jpg"
+      },
+      {
+        "name": "Jake Johnson",
+        "character": "Peter B. Parker (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/3UNfW2qZgRkW81neNVfQvaRC92K.jpg"
+      }
+    ],
+    "youtubeTrailerId": "cqGjhVJWtEg"
+  },
+  {
+    "tmdbId": 603692,
+    "name": "John Wick: Chapter 4",
+    "type": "movie",
+    "overview": "With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/7I6VUdPj6tQECNHdviJkUHD2u89.jpg",
+    "releaseDate": "2023-03-21",
+    "rating": 7.707,
+    "genres": [
+      "Action",
+      "Thriller",
+      "Crime"
+    ],
+    "cast": [
+      {
+        "name": "Keanu Reeves",
+        "character": "John Wick",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8RZLOyYGsoRe9p44q3xin9QkMHv.jpg"
+      },
+      {
+        "name": "Donnie Yen",
+        "character": "Caine",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/hTlhrrZMj8hZVvD17j4KyAFWBHc.jpg"
+      },
+      {
+        "name": "Bill Skarsgård",
+        "character": "Marquis",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/xBXLx1m0uzhXIbY3wN8lmPGeUHl.jpg"
+      },
+      {
+        "name": "Ian McShane",
+        "character": "Winston",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/qh9RTLbnr128TZLdGuXwUH9mdBM.jpg"
+      },
+      {
+        "name": "Laurence Fishburne",
+        "character": "Bowery King",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/2GbXERENPpl5MmlqOLlPVaVtifD.jpg"
+      }
+    ],
+    "youtubeTrailerId": "qEVUtrk8_B4"
+  },
+  {
+    "tmdbId": 361743,
+    "name": "Top Gun: Maverick",
+    "type": "movie",
+    "overview": "After more than thirty years of service as one of the Navy’s top aviators, and dodging the advancement in rank that would ground him, Pete “Maverick” Mitchell finds himself training a detachment of TOP GUN graduates for a specialized mission the likes of which no living pilot has ever seen.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/AaV1YIdWKnjAIAOe8UUKBFm327v.jpg",
+    "releaseDate": "2022-05-21",
+    "rating": 8.151,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "cast": [
+      {
+        "name": "Tom Cruise",
+        "character": "Capt. Pete 'Maverick' Mitchell",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/maf8PhSvDCdEwjEMbYfGpojR5RP.jpg"
+      },
+      {
+        "name": "Val Kilmer",
+        "character": "Adm. Tom 'Iceman' Kazansky",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/dZEGiq4XmCiXq9hmz0vVLId010z.jpg"
+      },
+      {
+        "name": "Miles Teller",
+        "character": "Lt. Bradley 'Rooster' Bradshaw",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/aciu7YM8fD0BzrrA6cJ5wDKZIA6.jpg"
+      },
+      {
+        "name": "Jennifer Connelly",
+        "character": "Penny Benjamin",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/wdmcJagSRJ65AuJ4IUCzuHAdvgy.jpg"
+      },
+      {
+        "name": "Bashir Salahuddin",
+        "character": "Wo-1. Bernie 'Hondo' Coleman",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ZL5MRzjd6kWkvQXqh5mgPY1CKP.jpg"
+      }
+    ],
+    "youtubeTrailerId": "giXco2jaZ_4"
+  },
+  {
+    "tmdbId": 155,
+    "name": "The Dark Knight",
+    "type": "movie",
+    "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/cfT29Im5VDvjE0RpyKOSdCKZal7.jpg",
+    "releaseDate": "2008-07-16",
+    "rating": 8.528,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "cast": [
+      {
+        "name": "Christian Bale",
+        "character": "Bruce Wayne",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/7Pxez9J8fuPd2Mn9kex13YALrCQ.jpg"
+      },
+      {
+        "name": "Heath Ledger",
+        "character": "Joker",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/AdWKVqyWpkYSfKE5Gb2qn8JzHni.jpg"
+      },
+      {
+        "name": "Aaron Eckhart",
+        "character": "Harvey Dent",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/u5JjnRMr9zKEVvOP7k3F6gdcwT6.jpg"
+      },
+      {
+        "name": "Michael Caine",
+        "character": "Alfred",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/bVZRMlpjTAO2pJK6v90buFgVbSW.jpg"
+      },
+      {
+        "name": "Maggie Gyllenhaal",
+        "character": "Rachel",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/vsfkWdYWmA9CpzMHTJzrFxlDnEZ.jpg"
+      }
+    ],
+    "youtubeTrailerId": "EXeTwQWrcwY"
+  },
+  {
+    "tmdbId": 414906,
+    "name": "The Batman",
+    "type": "movie",
+    "overview": "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/rvtdN5XkWAfGX6xDuPL6yYS2seK.jpg",
+    "releaseDate": "2022-03-01",
+    "rating": 7.658,
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "cast": [
+      {
+        "name": "Robert Pattinson",
+        "character": "Bruce Wayne / The Batman",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/3qZ09UE7lN6AtorfXFRYpEtSY93.jpg"
+      },
+      {
+        "name": "Zoë Kravitz",
+        "character": "Selina Kyle",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/hJKmhbuzDjmfw2nPBDWGbLagj16.jpg"
+      },
+      {
+        "name": "Jeffrey Wright",
+        "character": "Lt. James Gordon",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/yGcuHGW4glqRpOPxgiCvjcren7F.jpg"
+      },
+      {
+        "name": "Colin Farrell",
+        "character": "Oz / The Penguin",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/oyQVfpowL9eSudYhwoPGkd9WxS7.jpg"
+      },
+      {
+        "name": "Paul Dano",
+        "character": "The Riddler",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/kwxJ98dHuFOZNAZuri5I9cMEX7q.jpg"
+      }
+    ],
+    "youtubeTrailerId": "mqqft2x_Aa4"
+  },
+  {
+    "tmdbId": 872585,
+    "name": "Oppenheimer",
+    "type": "movie",
+    "overview": "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/neeNHeXjMF5fXoCJRsOmkNGC7q.jpg",
+    "releaseDate": "2023-07-19",
+    "rating": 8.032,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "cast": [
+      {
+        "name": "Cillian Murphy",
+        "character": "J. Robert Oppenheimer",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/2lKs67r7FI4bPu0AXxMUJZxmUXn.jpg"
+      },
+      {
+        "name": "Emily Blunt",
+        "character": "Kitty Oppenheimer",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5nCSG5TL1bP1geD8aaBfaLnLLCD.jpg"
+      },
+      {
+        "name": "Matt Damon",
+        "character": "Leslie Groves",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/At3JgvaNeEN4Z4ESKlhhes85Xo3.jpg"
+      },
+      {
+        "name": "Robert Downey Jr.",
+        "character": "Lewis Strauss",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
+      },
+      {
+        "name": "Florence Pugh",
+        "character": "Jean Tatlock",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/6Sjz9teWjrMY9lF2o9FCo4XmoRh.jpg"
+      }
+    ],
+    "youtubeTrailerId": "uYPbbksJxIg"
+  },
+  {
+    "tmdbId": 466420,
+    "name": "Killers of the Flower Moon",
+    "type": "movie",
+    "overview": "When oil is discovered in 1920s Oklahoma under Osage Nation land, the Osage people are murdered one by one—until the FBI steps in to unravel the mystery.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/dB6Krk806zeqd0YNp2ngQ9zXteH.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/1X7vow16X7CnCoexXh4H4F2yDJv.jpg",
+    "releaseDate": "2023-10-18",
+    "rating": 7.399,
+    "genres": [
+      "Crime",
+      "History",
+      "Drama"
+    ],
+    "cast": [
+      {
+        "name": "Leonardo DiCaprio",
+        "character": "Ernest Burkhart",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg"
+      },
+      {
+        "name": "Robert De Niro",
+        "character": "William Hale",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/cT8htcckIuyI1Lqwt1CvD02ynTh.jpg"
+      },
+      {
+        "name": "Lily Gladstone",
+        "character": "Mollie Burkhart",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/zYAN84WqZv2sbVE2JDkcWoXGoF7.jpg"
+      },
+      {
+        "name": "Jesse Plemons",
+        "character": "Tom White",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/og4I51GsuwohdPgoELOHVMMqMre.jpg"
+      },
+      {
+        "name": "Tantoo Cardinal",
+        "character": "Lizzie Q",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/rxhjfygJlPwztf36iRI7UDn5dr7.jpg"
+      }
+    ],
+    "youtubeTrailerId": "EP34Yoxs3FQ"
+  },
+  {
+    "tmdbId": 792307,
+    "name": "Poor Things",
+    "type": "movie",
+    "overview": "Brought back to life by an unorthodox scientist, a young woman runs off with a lawyer on a whirlwind adventure across the continents. Free from the prejudices of her times, she grows steadfast in her purpose to stand for equality and liberation.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/zh6IdheEYinU4TPtorWsjx6qPQE.jpg",
+    "releaseDate": "2023-12-07",
+    "rating": 7.6,
+    "genres": [
+      "Science Fiction",
+      "Romance",
+      "Comedy"
+    ],
+    "cast": [
+      {
+        "name": "Emma Stone",
+        "character": "Bella Baxter",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/cZ8a3QvAnj2cgcgVL6g4XaqPzpL.jpg"
+      },
+      {
+        "name": "Mark Ruffalo",
+        "character": "Duncan Wedderburn",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5GilHMOt5PAQh6rlUKZzGmaKEI7.jpg"
+      },
+      {
+        "name": "Willem Dafoe",
+        "character": "Godwin Baxter",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ui8e4sgZAwMPi3hzEO53jyBJF9B.jpg"
+      },
+      {
+        "name": "Ramy Youssef",
+        "character": "Max McCandles",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/uLQWOoq11TKqnLfJBu90aKEGj8O.jpg"
+      },
+      {
+        "name": "Christopher Abbott",
+        "character": "Alfie Blessington",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/qWmlTycQb3yXaGhxPb6LCyaDjqh.jpg"
+      }
+    ],
+    "youtubeTrailerId": "RlbR5N6veqw"
+  },
+  {
+    "tmdbId": 346698,
+    "name": "Barbie",
+    "type": "movie",
+    "overview": "Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the joys and perils of living among humans.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/3N5QNUqS76GFYNoEayfkkJyAyTN.jpg",
+    "releaseDate": "2023-07-19",
+    "rating": 6.927,
+    "genres": [
+      "Comedy",
+      "Adventure"
+    ],
+    "cast": [
+      {
+        "name": "Margot Robbie",
+        "character": "Barbie",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8LqG2N6j98lFGMpuYsRUAhOunSd.jpg"
+      },
+      {
+        "name": "Ryan Gosling",
+        "character": "Ken",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/lyUyVARQKhGxaxy0FbPJCQRpiaW.jpg"
+      },
+      {
+        "name": "America Ferrera",
+        "character": "Gloria",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/7q9uUWnaIjveX8DTU2lcA7mA3dp.jpg"
+      },
+      {
+        "name": "Ariana Greenblatt",
+        "character": "Sasha",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/kTUuyjwc0sSiOGQkNhbmpmqMt5a.jpg"
+      },
+      {
+        "name": "Issa Rae",
+        "character": "Barbie",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/uFjimuDgBv8kckApr19t8DykxPH.jpg"
+      }
+    ],
+    "youtubeTrailerId": "pBk4NYhWNMM"
+  },
+  {
+    "tmdbId": 244786,
+    "name": "Whiplash",
+    "type": "movie",
+    "overview": "Under the direction of a ruthless instructor, a talented young drummer begins to pursue perfection at any cost, even his humanity.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/wbQa0EnWUyRzQ5d1pHLNRlmsCUP.jpg",
+    "releaseDate": "2014-10-10",
+    "rating": 8.4,
+    "genres": [
+      "Drama",
+      "Music",
+      "Thriller"
+    ],
+    "cast": [
+      {
+        "name": "Miles Teller",
+        "character": "Andrew",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/aciu7YM8fD0BzrrA6cJ5wDKZIA6.jpg"
+      },
+      {
+        "name": "J.K. Simmons",
+        "character": "Fletcher",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ScmKoJ9eiSUOthAt1PDNLi8Fkw.jpg"
+      },
+      {
+        "name": "Paul Reiser",
+        "character": "Jim",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/rGryzG00uSk8LsidacSBXVgo3iv.jpg"
+      },
+      {
+        "name": "Melissa Benoist",
+        "character": "Nicole",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/fUPIkDDVmyZPejPu67HyfdDar9W.jpg"
+      },
+      {
+        "name": "Austin Stowell",
+        "character": "Ryan",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/At09XQpVXnChgedNsxu4ceR5W9i.jpg"
+      }
+    ],
+    "youtubeTrailerId": "7d_jQycdQGo"
+  },
+  {
+    "tmdbId": 419430,
+    "name": "Get Out",
+    "type": "movie",
+    "overview": "Chris and his girlfriend Rose go upstate to visit her parents for the weekend. At first, Chris reads the family's overly accommodating behavior as nervous attempts to deal with their daughter's interracial relationship, but as the weekend progresses, a series of increasingly disturbing discoveries lead him to a truth that he never could have imagined.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/mE24wUCfjK8AoBBjaMjho7Rczr7.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/o8dPH0ZSIyyViP6rjRX1djwCUwI.jpg",
+    "releaseDate": "2017-02-24",
+    "rating": 7.622,
+    "genres": [
+      "Mystery",
+      "Thriller",
+      "Horror"
+    ],
+    "cast": [
+      {
+        "name": "Daniel Kaluuya",
+        "character": "Chris Washington",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/jj2kZqJobjom36wlhlYhc38nTwN.jpg"
+      },
+      {
+        "name": "Allison Williams",
+        "character": "Rose Armitage",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5Jy9HELKS1OYg7moRl8870OSfJq.jpg"
+      },
+      {
+        "name": "Catherine Keener",
+        "character": "Missy Armitage",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/n4CTwGszs6cwS1wJRlDQ5Mlh7Ex.jpg"
+      },
+      {
+        "name": "Bradley Whitford",
+        "character": "Dean Armitage",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/hy3jwrcpmEpM7jLkrhlqQb1TfGN.jpg"
+      },
+      {
+        "name": "Caleb Landry Jones",
+        "character": "Jeremy Armitage",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8M5lPHrERwAIfWK56RkH30FOjhV.jpg"
+      }
+    ],
+    "youtubeTrailerId": "DzfpyUB60YY"
+  },
+  {
+    "tmdbId": 493922,
+    "name": "Hereditary",
+    "type": "movie",
+    "overview": "Following the death of the Leigh family matriarch, Annie and her children uncover disturbing secrets about their heritage. Their daily lives are not only impacted, but they also become entangled in a chilling fate from which they cannot escape, driving them to the brink of madness.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/hjlZSXM86wJrfCv5VKfR5DI2VeU.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/gJbTXKNTL6O7r7PzF6ZRkJGBlPp.jpg",
+    "releaseDate": "2018-06-07",
+    "rating": 7.294,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "cast": [
+      {
+        "name": "Toni Collette",
+        "character": "Annie Graham",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/lzXRh16qe4HHeBN6tMyw0DHvaMn.jpg"
+      },
+      {
+        "name": "Alex Wolff",
+        "character": "Peter Graham",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/7PMu5zFOEH7PqFDzrKThgKD4Ndf.jpg"
+      },
+      {
+        "name": "Gabriel Byrne",
+        "character": "Steve Graham",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/9r9oDGENg92VYYFMkV4C09IUlrb.jpg"
+      },
+      {
+        "name": "Milly Shapiro",
+        "character": "Charlie Graham",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5QVwZttyqVDl0M3AKwe0SDU8S5R.jpg"
+      },
+      {
+        "name": "Ann Dowd",
+        "character": "Joan",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/zo44U71uiMNVW1HSiOa5F9MpqIq.jpg"
+      }
+    ],
+    "youtubeTrailerId": "dV8zKS2b7QQ"
+  },
+  {
+    "tmdbId": 530385,
+    "name": "Midsommar",
+    "type": "movie",
+    "overview": "Several friends travel to Sweden to study as anthropologists a summer festival that is held every ninety years in the remote hometown of one of them. What begins as a dream vacation in a place where the sun never sets, gradually turns into a dark nightmare as the mysterious inhabitants invite them to participate in their disturbing festive activities.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/7LEI8ulZzO5gy9Ww2NVCrKmHeDZ.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/pYgj8e2Y6RufnSyOA6OnzmxFXxZ.jpg",
+    "releaseDate": "2019-07-03",
+    "rating": 7.152,
+    "genres": [
+      "Horror",
+      "Drama",
+      "Mystery"
+    ],
+    "cast": [
+      {
+        "name": "Florence Pugh",
+        "character": "Dani",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/6Sjz9teWjrMY9lF2o9FCo4XmoRh.jpg"
+      },
+      {
+        "name": "Jack Reynor",
+        "character": "Christian",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/1MSZks6afitwdYttLh617G6MBRQ.jpg"
+      },
+      {
+        "name": "William Jackson Harper",
+        "character": "Josh",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5Oy037YttIweiqNGaErkalNmH0G.jpg"
+      },
+      {
+        "name": "Will Poulter",
+        "character": "Mark",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/9blYMaj79VGC6BHTLmJp3V5S8r3.jpg"
+      },
+      {
+        "name": "Vilhelm Blomgren",
+        "character": "Pelle",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/uxfGg0gwEJS6CvY0PMNk90yoO71.jpg"
+      }
+    ],
+    "youtubeTrailerId": "1Vnghdsjmd0"
+  },
+  {
+    "tmdbId": 496243,
+    "name": "Parasite",
+    "type": "movie",
+    "overview": "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg",
+    "releaseDate": "2019-05-30",
+    "rating": 8.494,
+    "genres": [
+      "Comedy",
+      "Thriller",
+      "Drama"
+    ],
+    "cast": [
+      {
+        "name": "Song Kang-ho",
+        "character": "Kim Ki-taek",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/kBM9UTPYXUA2RNk210DXhztLFns.jpg"
+      },
+      {
+        "name": "Lee Sun-kyun",
+        "character": "Park Dong-ik",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/nHFBbSFohzOUOvMxPVwe3Es2nJw.jpg"
+      },
+      {
+        "name": "Cho Yeo-jeong",
+        "character": "Yeon-kyo",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5MgWM8pkUiYkj9MEaEpO0Ir1FD9.jpg"
+      },
+      {
+        "name": "Choi Woo-shik",
+        "character": "Ki-woo",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/hRDiuKWwe156zRjEu826eci7H3r.jpg"
+      },
+      {
+        "name": "Park So-dam",
+        "character": "Ki-jung",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/fGVOikpvivopeATDy6ZzLdKYXDu.jpg"
+      }
+    ],
+    "youtubeTrailerId": "5xH0HfJHsaY"
+  },
+  {
+    "tmdbId": 76600,
+    "name": "Avatar: The Way of Water",
+    "type": "movie",
+    "overview": "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/kJsPVzdyBrYHLomuNv5SJDXUQ2f.jpg",
+    "releaseDate": "2022-12-14",
+    "rating": 7.592,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "cast": [
+      {
+        "name": "Sam Worthington",
+        "character": "Jake Sully",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/mflBcox36s9ZPbsZPVOuhf6axaJ.jpg"
+      },
+      {
+        "name": "Zoe Saldaña",
+        "character": "Neytiri",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/iOVbUH20il632nj2v01NCtYYeSg.jpg"
+      },
+      {
+        "name": "Sigourney Weaver",
+        "character": "Kiri",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/wTSnfktNBLd6kwQxgvkqYw6vEon.jpg"
+      },
+      {
+        "name": "Stephen Lang",
+        "character": "Colonel Miles Quaritch",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/gnO5VfkDgA2fsHweD0622LUY3Hu.jpg"
+      },
+      {
+        "name": "Kate Winslet",
+        "character": "Ronal",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/6qNnMsKtKz9si5rabpUEG85UfHp.jpg"
+      }
+    ],
+    "youtubeTrailerId": "a8Gx8wiNbs8"
+  },
+  {
+    "tmdbId": 786892,
+    "name": "Furiosa: A Mad Max Saga",
+    "type": "movie",
+    "overview": "As the world falls, young Furiosa is snatched from the Green Place of Many Mothers into the hands of a great biker horde led by the warlord Dementus. Sweeping through the wasteland, they encounter the citadel presided over by Immortan Joe. The two tyrants wage war for dominance, and Furiosa must survive many trials as she puts together the means to find her way home.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/iADOJ8Zymht2JPMoy3R7xceZprc.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/raph7qjAGTMXaIjVxt6ZDSXRzUr.jpg",
+    "releaseDate": "2024-05-22",
+    "rating": 7.452,
+    "genres": [
+      "Action",
+      "Science Fiction",
+      "Adventure"
+    ],
+    "cast": [
+      {
+        "name": "Anya Taylor-Joy",
+        "character": "Furiosa",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/qYNofOjlRke2MlJVihmJmEdQI4v.jpg"
+      },
+      {
+        "name": "Chris Hemsworth",
+        "character": "Dementus",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/piQGdoIQOF3C1EI5cbYZLAW1gfj.jpg"
+      },
+      {
+        "name": "Tom Burke",
+        "character": "Praetorian Jack",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/4IHlAZ9bJ82VAd6HUOWFgo81SDq.jpg"
+      },
+      {
+        "name": "Alyla Browne",
+        "character": "Young Furiosa",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/aCNuhm0nbl90FGPCpOMHW5QCFfb.jpg"
+      },
+      {
+        "name": "George Shevtsov",
+        "character": "The History Man",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/cuOoCZShfvNrOvrWqH2dPyBfrZS.jpg"
+      }
+    ],
+    "youtubeTrailerId": "XJMuhwVlca4"
+  },
+  {
+    "tmdbId": 1022789,
+    "name": "Inside Out 2",
+    "type": "movie",
+    "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/p5ozvmdgsmbWe0H8Xk7Rc8SCwAB.jpg",
+    "releaseDate": "2024-06-11",
+    "rating": 7.544,
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy",
+      "Family"
+    ],
+    "cast": [
+      {
+        "name": "Amy Poehler",
+        "character": "Joy (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/rwmvRonpluV6dCPiQissYrchvSD.jpg"
+      },
+      {
+        "name": "Maya Hawke",
+        "character": "Anxiety (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/9jX7HdSHocuZxOrzDCEC49qy9po.jpg"
+      },
+      {
+        "name": "Kensington Tallman",
+        "character": "Riley (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/tBqawwg2VJq1V4mZjAOFQ7fnXNW.jpg"
+      },
+      {
+        "name": "Liza Lapira",
+        "character": "Disgust (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/o3jvQAGWtxi5rEycslhC6CY8BWX.jpg"
+      },
+      {
+        "name": "Tony Hale",
+        "character": "Fear (voice)",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ar4uapp4w5wMkThZcqWUNMSTO8z.jpg"
+      }
+    ],
+    "youtubeTrailerId": "yAZxxqQpSqI"
+  },
+  {
+    "tmdbId": 238,
+    "name": "The Godfather",
+    "type": "movie",
+    "overview": "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/tSPT36ZKlP2WVHJLM4cQPLSzv3b.jpg",
+    "releaseDate": "1972-03-14",
+    "rating": 8.687,
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "cast": [
+      {
+        "name": "Marlon Brando",
+        "character": "Don Vito Corleone",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/eEHCjqKMWSvQU4bmwhLMsg4RtEr.jpg"
+      },
+      {
+        "name": "Al Pacino",
+        "character": "Michael Corleone",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/m8HAAjq1T75JypKk0v1FFQn4ysZ.jpg"
+      },
+      {
+        "name": "James Caan",
+        "character": "Sonny Corleone",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/atBi5e3x9q596rejXI9bYrFXryf.jpg"
+      },
+      {
+        "name": "Robert Duvall",
+        "character": "Tom Hagen",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/3tcKxC5Sc3DJ6XPDKKC2EAomEWn.jpg"
+      },
+      {
+        "name": "Richard S. Castellano",
+        "character": "Clemenza",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/1vr75BdHWret81vuSJ3ugiCBkxw.jpg"
+      }
+    ],
+    "youtubeTrailerId": "sY1S34973zA"
+  },
+  {
+    "tmdbId": 278,
+    "name": "The Shawshank Redemption",
+    "type": "movie",
+    "overview": "Imprisoned in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg",
+    "releaseDate": "1994-09-23",
+    "rating": 8.718,
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "cast": [
+      {
+        "name": "Tim Robbins",
+        "character": "Andy Dufresne",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/3FfJMIVwXgsIXbAT8ECBSZJAncR.jpg"
+      },
+      {
+        "name": "Morgan Freeman",
+        "character": "Ellis Boyd 'Red' Redding",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/jPsLqiYGSofU4s6BjrxnefMfabb.jpg"
+      },
+      {
+        "name": "Bob Gunton",
+        "character": "Warden Norton",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ulbVvuBToBN3aCGcV028hwO0MOP.jpg"
+      },
+      {
+        "name": "William Sadler",
+        "character": "Heywood",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/xC9sijoDnjS3oDZ5eszcGKHKAOp.jpg"
+      },
+      {
+        "name": "Clancy Brown",
+        "character": "Captain Byron T. Hadley",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/1JeBRNG7VS7r64V9lOvej9bZXW5.jpg"
+      }
+    ],
+    "youtubeTrailerId": "PLl99DlL6b4"
+  },
+  {
+    "tmdbId": 550,
+    "name": "Fight Club",
+    "type": "movie",
+    "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/c6OLXfKAk5BKeR6broC8pYiCquX.jpg",
+    "releaseDate": "1999-10-15",
+    "rating": 8.438,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      {
+        "name": "Edward Norton",
+        "character": "Narrator",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8nytsqL59SFJTVYVrN72k6qkGgJ.jpg"
+      },
+      {
+        "name": "Brad Pitt",
+        "character": "Tyler Durden",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/r9DzKQLNbh5QfXlrFGHoVNKER7X.jpg"
+      },
+      {
+        "name": "Helena Bonham Carter",
+        "character": "Marla Singer",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/hJMbNSPJ2PCahsP3rNEU39C8GWU.jpg"
+      },
+      {
+        "name": "Meat Loaf",
+        "character": "Robert Paulson",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/7gKLR1u46OB8WJ6m06LemNBCMx6.jpg"
+      },
+      {
+        "name": "Jared Leto",
+        "character": "Angel Face",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ca3x0OfIKbJppZh8S1Alx3GfUZO.jpg"
+      }
+    ],
+    "youtubeTrailerId": "BdJKm16Co6M"
+  },
+  {
+    "tmdbId": 680,
+    "name": "Pulp Fiction",
+    "type": "movie",
+    "overview": "A burger-loving hit man, his philosophical partner, a drug-addled gangster's moll and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfurl in three stories that ingeniously trip back and forth in time.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg",
+    "releaseDate": "1994-09-10",
+    "rating": 8.486,
+    "genres": [
+      "Thriller",
+      "Crime",
+      "Comedy"
+    ],
+    "cast": [
+      {
+        "name": "John Travolta",
+        "character": "Vincent Vega",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ap8eEYfBKTLixmVVpRlq4NslDD5.jpg"
+      },
+      {
+        "name": "Samuel L. Jackson",
+        "character": "Jules Winnfield",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/AiAYAqwpM5xmiFrAIeQvUXDCVvo.jpg"
+      },
+      {
+        "name": "Uma Thurman",
+        "character": "Mia Wallace",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/sBgAZWi3o4FsnaTvnTNtK6jpQcF.jpg"
+      },
+      {
+        "name": "Bruce Willis",
+        "character": "Butch Coolidge",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/w3aXr1e7gQCn8MSp1vW4sXHn99P.jpg"
+      },
+      {
+        "name": "Ving Rhames",
+        "character": "Marsellus Wallace",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/tOVDvu1EQP78AwaUw6uh1wN818E.jpg"
+      }
+    ],
+    "youtubeTrailerId": "tGpTpVyI_OQ"
+  },
+  {
+    "tmdbId": 13,
+    "name": "Forrest Gump",
+    "type": "movie",
+    "overview": "A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case, far exceeding what anyone imagined he could do. But despite all he has achieved, his one true love eludes him.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/67HggiWaP9ZLv5sPYmyRV37yAJM.jpg",
+    "releaseDate": "1994-06-23",
+    "rating": 8.5,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "cast": [
+      {
+        "name": "Tom Hanks",
+        "character": "Forrest Gump",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/oFvZoKI6lvU03n4YoNGAll9rkas.jpg"
+      },
+      {
+        "name": "Robin Wright",
+        "character": "Jenny Curran",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/d3rIv0y2p0jMsQ7ViR7O1606NZa.jpg"
+      },
+      {
+        "name": "Gary Sinise",
+        "character": "Lieutenant Dan Taylor",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/olRjiV8ZhBixQiTvrGwXhpVXxsV.jpg"
+      },
+      {
+        "name": "Sally Field",
+        "character": "Mrs. Gump",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5fBK36MdmdwQQMuP0W70rXADXih.jpg"
+      },
+      {
+        "name": "Mykelti Williamson",
+        "character": "Bubba Blue",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/dR16zD9AjnHWbeN5OVmJWE0vSax.jpg"
+      }
+    ],
+    "youtubeTrailerId": "bLvqoHBptjg"
+  },
+  {
+    "tmdbId": 120,
+    "name": "The Lord of the Rings: The Fellowship of the Ring",
+    "type": "movie",
+    "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/oiwc338EoBgS4sEI2ixAny4KQKg.jpg",
+    "releaseDate": "2001-12-18",
+    "rating": 8.431,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Action"
+    ],
+    "cast": [
+      {
+        "name": "Elijah Wood",
+        "character": "Frodo",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ayARmqAe9Aab1zg6FjJG0u9MEBo.jpg"
+      },
+      {
+        "name": "Ian McKellen",
+        "character": "Gandalf",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/coWjgMEYJjk2OrNddlXCBm8EIr3.jpg"
+      },
+      {
+        "name": "Viggo Mortensen",
+        "character": "Aragorn",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/vH5gVSpHAMhDaFWfh0Q7BG61O1y.jpg"
+      },
+      {
+        "name": "Sean Astin",
+        "character": "Sam",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/As3ctGUtBYmG4zj4Ifyrcqd71HP.jpg"
+      },
+      {
+        "name": "Ian Holm",
+        "character": "Bilbo",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/cOJDgvgj4nMec6Inzj1H5nugTO5.jpg"
+      }
+    ],
+    "youtubeTrailerId": "aStYWD25fAQ"
+  },
+  {
+    "tmdbId": 11,
+    "name": "Star Wars",
+    "type": "movie",
+    "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/yUiXA68FfQeA8cRBhd0Ao0jIRZt.jpg",
+    "releaseDate": "1977-05-25",
+    "rating": 8.2,
+    "genres": [
+      "Adventure",
+      "Action",
+      "Science Fiction"
+    ],
+    "cast": [
+      {
+        "name": "Mark Hamill",
+        "character": "Luke Skywalker",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/zMQ93JTLW8KxusKhOlHFZhih3YQ.jpg"
+      },
+      {
+        "name": "Harrison Ford",
+        "character": "Han Solo",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/pjBMJVPpcZK23Vt1nzr1zEBTWrP.jpg"
+      },
+      {
+        "name": "Carrie Fisher",
+        "character": "Princess Leia Organa",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/of4yHmryKPy92eeskUQ7MRmjC3l.jpg"
+      },
+      {
+        "name": "Peter Cushing",
+        "character": "Grand Moff Tarkin",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/if5g03wn6uvHx7F6FxXHLebKc0q.jpg"
+      },
+      {
+        "name": "Alec Guinness",
+        "character": "Obi-Wan \"Ben\" Kenobi",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/q9QgiNDEO6lbi7uMAOw0OgWn8DG.jpg"
+      }
+    ],
+    "youtubeTrailerId": "1g3_cfGNbOs"
+  },
+  {
+    "tmdbId": 603,
+    "name": "The Matrix",
+    "type": "movie",
+    "overview": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/tlm8UkiQsitc8rSuIAscQDCnP8d.jpg",
+    "releaseDate": "1999-03-31",
+    "rating": 8.242,
+    "genres": [
+      "Action",
+      "Science Fiction"
+    ],
+    "cast": [
+      {
+        "name": "Keanu Reeves",
+        "character": "Neo",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8RZLOyYGsoRe9p44q3xin9QkMHv.jpg"
+      },
+      {
+        "name": "Laurence Fishburne",
+        "character": "Morpheus",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/2GbXERENPpl5MmlqOLlPVaVtifD.jpg"
+      },
+      {
+        "name": "Carrie-Anne Moss",
+        "character": "Trinity",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/xD4jTA3KmVp5Rq3aHcymL9DUGjD.jpg"
+      },
+      {
+        "name": "Hugo Weaving",
+        "character": "Agent Smith",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/lSC8Et0PYi5zeQb3IpPkFje7hgR.jpg"
+      },
+      {
+        "name": "Gloria Foster",
+        "character": "Oracle",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/AriGXtC9fjBOia9Zr8CZjn4o3rx.jpg"
+      }
+    ],
+    "youtubeTrailerId": "vKQi3bBA1y8"
+  },
+  {
+    "tmdbId": 769,
+    "name": "GoodFellas",
+    "type": "movie",
+    "overview": "The true story of Henry Hill, a half-Irish, half-Sicilian Brooklyn kid who is adopted by neighbourhood gangsters at an early age and climbs the ranks of a Mafia family under the guidance of Jimmy Conway.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/9OkCLM73MIU2CrKZbqiT8Ln1wY2.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/gILte6Zd7m1YneIr6MVhh30S9pr.jpg",
+    "releaseDate": "1990-09-12",
+    "rating": 8.453,
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "cast": [
+      {
+        "name": "Robert De Niro",
+        "character": "James Conway",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/cT8htcckIuyI1Lqwt1CvD02ynTh.jpg"
+      },
+      {
+        "name": "Ray Liotta",
+        "character": "Henry Hill",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/rhaCUi04uEXDFvuPM5Drj1AprE6.jpg"
+      },
+      {
+        "name": "Joe Pesci",
+        "character": "Tommy DeVito",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/zbAdhqbMfRXSz26TjxJvB5f2eL5.jpg"
+      },
+      {
+        "name": "Lorraine Bracco",
+        "character": "Karen Hill",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/tAtpCzN4sTOy1RHpMpJj52zTO4S.jpg"
+      },
+      {
+        "name": "Paul Sorvino",
+        "character": "Paul Cicero",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/1gF0UskusEdDcNaBDJ2CMsz5Agi.jpg"
+      }
+    ],
+    "youtubeTrailerId": "2ilzidi_J8Q"
+  },
+  {
+    "tmdbId": 389,
+    "name": "12 Angry Men",
+    "type": "movie",
+    "overview": "The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/zhG3vKWyDRaZYoaww1UVAi29T9h.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/w4bTBXcqXc2TUyS5Fc4h67uWbPn.jpg",
+    "releaseDate": "1957-04-10",
+    "rating": 8.559,
+    "genres": [
+      "Drama"
+    ],
+    "cast": [
+      {
+        "name": "Martin Balsam",
+        "character": "Juror 1",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/2q7xs6j6vGll3pc9Mm6TUEvvwBf.jpg"
+      },
+      {
+        "name": "John Fiedler",
+        "character": "Juror 2",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/27sXisLWQJQ49PD40j89miNhL73.jpg"
+      },
+      {
+        "name": "Lee J. Cobb",
+        "character": "Juror 3",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/yxMxBvM0PZwu7YXQamG0kFwt9DZ.jpg"
+      },
+      {
+        "name": "E.G. Marshall",
+        "character": "Juror 4",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/psimeVoRk64DV7UNm4cLQylRFy2.jpg"
+      },
+      {
+        "name": "Jack Klugman",
+        "character": "Juror 5",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/oJxveOxlunD8C9OczqKeryU0k6D.jpg"
+      }
+    ],
+    "youtubeTrailerId": "TEn4MHRZt54"
+  },
+  {
+    "tmdbId": 429,
+    "name": "The Good, the Bad and the Ugly",
+    "type": "movie",
+    "overview": "While the Civil War rages on between the Union and the Confederacy, three men – a quiet loner, a ruthless hitman, and a Mexican bandit – comb the American Southwest in search of a strongbox containing $200,000 in stolen gold.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/Adrip2Jqzw56KeuV2nAxucKMNXA.jpg",
+    "releaseDate": "1966-12-23",
+    "rating": 8.469,
+    "genres": [
+      "Western"
+    ],
+    "cast": [
+      {
+        "name": "Clint Eastwood",
+        "character": "Blondie",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8TwdCfeOZH7ucRlfLZ6wObxa7cO.jpg"
+      },
+      {
+        "name": "Eli Wallach",
+        "character": "Tuco Ramirez",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/egLe8r2PwbTx9ocwS1Zu2vsYC9v.jpg"
+      },
+      {
+        "name": "Lee Van Cleef",
+        "character": "Sentenza / Angel Eyes",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/yQc5wjNCdRZzPp5E2wRPRYsEq9a.jpg"
+      },
+      {
+        "name": "Aldo Giuffrè",
+        "character": "Alcoholic Union Captain",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/aT6eECl1R3YGYL4KatyIQrq0zG8.jpg"
+      },
+      {
+        "name": "Luigi Pistilli",
+        "character": "Father Pablo Ramirez",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/bH5vmD2CMBHzJyBe0P0bL6iTUNL.jpg"
+      }
+    ],
+    "youtubeTrailerId": "WNhK00zpOOQ"
+  },
+  {
+    "tmdbId": 539,
+    "name": "Psycho",
+    "type": "movie",
+    "overview": "When larcenous real estate clerk Marion Crane goes on the lam with a wad of cash and hopes of starting a new life, she ends up at the notorious Bates Motel, where manager Norman Bates cares for his housebound mother.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/yz4QVqPx3h1hD1DfqqQkCq3rmxW.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/mufF1aYvwdpKerhq5R1YrVcbJLY.jpg",
+    "releaseDate": "1960-06-22",
+    "rating": 8.416,
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Mystery"
+    ],
+    "cast": [
+      {
+        "name": "Anthony Perkins",
+        "character": "Norman Bates",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/7FipKwmg2woHNvt5ATeXLBirHXs.jpg"
+      },
+      {
+        "name": "Janet Leigh",
+        "character": "Marion Crane",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/2dv9IqJEx31RSoH7xAHlJZXF5uB.jpg"
+      },
+      {
+        "name": "Vera Miles",
+        "character": "Lila Crane",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/9PDTsJnBfrAlvVPOBBFS3ehN8lD.jpg"
+      },
+      {
+        "name": "John Gavin",
+        "character": "Sam Loomis",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/n8vlG1PRtNzv6vlwjTNK7UnoKr0.jpg"
+      },
+      {
+        "name": "Martin Balsam",
+        "character": "Milton Arbogast",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/2q7xs6j6vGll3pc9Mm6TUEvvwBf.jpg"
+      }
+    ],
+    "youtubeTrailerId": "PeLPzXQKvP8"
+  },
+  {
+    "tmdbId": 578,
+    "name": "Jaws",
+    "type": "movie",
+    "overview": "When the seaside community of Amity finds itself under attack by a dangerous great white shark, the town's chief of police, a young marine biologist, and a grizzled shark hunter embark on a desperate quest to kill the beast before it strikes again.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/tjbLSFwi0I3phZwh8zoHWNfbsEp.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/i1yf91svRHX45l9BXL8rVFzLoPH.jpg",
+    "releaseDate": "1975-06-20",
+    "rating": 7.681,
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Adventure"
+    ],
+    "cast": [
+      {
+        "name": "Roy Scheider",
+        "character": "Brody",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/y0MTwkCm5fIKjM1xH90tZbjAHql.jpg"
+      },
+      {
+        "name": "Robert Shaw",
+        "character": "Quint",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/c8SIbGEmGIfhD9bObSf4FELUEns.jpg"
+      },
+      {
+        "name": "Richard Dreyfuss",
+        "character": "Hooper",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/q2BPu6zWwFtnzQfpl4fgbKqURXM.jpg"
+      },
+      {
+        "name": "Lorraine Gary",
+        "character": "Ellen Brody",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/6JKNdZopypnFnD9xSSlDs6YTHMC.jpg"
+      },
+      {
+        "name": "Murray Hamilton",
+        "character": "Vaughn",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/kEAXyzRQ5POdciTjAUjRW4lIslj.jpg"
+      }
+    ],
+    "youtubeTrailerId": "s82WBpfnCNM"
+  },
+  {
+    "tmdbId": 122,
+    "name": "The Lord of the Rings: The Return of the King",
+    "type": "movie",
+    "overview": "As armies mass for a final battle that will decide the fate of the world--and powerful, ancient forces of Light and Dark compete to determine the outcome--one member of the Fellowship of the Ring is revealed as the noble heir to the throne of the Kings of Men. Yet, the sole hope for triumph over evil lies with a brave hobbit, Frodo, who, accompanied by his loyal friend Sam and the hideous, wretched Gollum, ventures deep into the very dark heart of Mordor on his seemingly impossible quest to destroy the Ring of Power.​",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/2u7zbn8EudG6kLlBzUYqP8RyFU4.jpg",
+    "releaseDate": "2003-12-17",
+    "rating": 8.496,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Action"
+    ],
+    "cast": [
+      {
+        "name": "Elijah Wood",
+        "character": "Frodo",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ayARmqAe9Aab1zg6FjJG0u9MEBo.jpg"
+      },
+      {
+        "name": "Ian McKellen",
+        "character": "Gandalf",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/coWjgMEYJjk2OrNddlXCBm8EIr3.jpg"
+      },
+      {
+        "name": "Viggo Mortensen",
+        "character": "Aragorn",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/vH5gVSpHAMhDaFWfh0Q7BG61O1y.jpg"
+      },
+      {
+        "name": "Sean Astin",
+        "character": "Sam",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/As3ctGUtBYmG4zj4Ifyrcqd71HP.jpg"
+      },
+      {
+        "name": "Andy Serkis",
+        "character": "Gollum / Smeagol",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/eNGqhebQ4cDssjVeNFrKtUvweV5.jpg"
+      }
+    ],
+    "youtubeTrailerId": "r5X-hFf6Bwo"
+  },
+  {
+    "tmdbId": 274,
+    "name": "The Silence of the Lambs",
+    "type": "movie",
+    "overview": "Clarice Starling is a top student at the FBI's training academy.  Jack Crawford wants Clarice to interview Dr. Hannibal Lecter, a brilliant psychiatrist who is also a violent psychopath, serving life behind bars for various acts of murder and cannibalism.  Crawford believes that Lecter may have insight into a case and that Starling, as an attractive young woman, may be just the bait to draw him out.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/aYcnDyLMnpKce1FOYUpZrXtgUye.jpg",
+    "releaseDate": "1991-02-14",
+    "rating": 8.346,
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Drama"
+    ],
+    "cast": [
+      {
+        "name": "Jodie Foster",
+        "character": "Clarice Starling",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5emVgsLFlU6SmeBIFsF2Y7aqwtG.jpg"
+      },
+      {
+        "name": "Anthony Hopkins",
+        "character": "Dr. Hannibal Lecter",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/dYVQTK1dPrQl1mugeLEWSSmA6Im.jpg"
+      },
+      {
+        "name": "Scott Glenn",
+        "character": "Jack Crawford",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8DHORod2l6ZFS9KR0gNAAM3WZfI.jpg"
+      },
+      {
+        "name": "Ted Levine",
+        "character": "Jame Gumb",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/451KSkowLW6M2Au0wBKZZcidgGm.jpg"
+      },
+      {
+        "name": "Anthony Heald",
+        "character": "Dr. Frederick Chilton",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/e0E6Z1Y0debr4mAHgj0HO7MYyXG.jpg"
+      }
+    ],
+    "youtubeTrailerId": "W6Mm8Sbe__o"
+  },
+  {
+    "tmdbId": 497,
+    "name": "The Green Mile",
+    "type": "movie",
+    "overview": "A supernatural tale set on death row in a Southern prison, where gentle giant John Coffey possesses the mysterious power to heal people's ailments. When the cell block's head guard, Paul Edgecomb, recognizes Coffey's miraculous gift, he tries desperately to help stave off the condemned man's execution.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/b6HWTOxn1xevvyHU2K9ICvaRU6g.jpg",
+    "releaseDate": "1999-12-10",
+    "rating": 8.505,
+    "genres": [
+      "Fantasy",
+      "Drama",
+      "Crime"
+    ],
+    "cast": [
+      {
+        "name": "Tom Hanks",
+        "character": "Paul Edgecomb",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/oFvZoKI6lvU03n4YoNGAll9rkas.jpg"
+      },
+      {
+        "name": "David Morse",
+        "character": "Brutus 'Brutal' Howell",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/A6zGbkFjM3uajIakgsSeNTmSKqY.jpg"
+      },
+      {
+        "name": "Bonnie Hunt",
+        "character": "Jan Edgecomb",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/nO1jJO1EVzlryfIViEu4zu5Rytw.jpg"
+      },
+      {
+        "name": "Michael Clarke Duncan",
+        "character": "John Coffey",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/3RX8OBqt3gbvFwKYZqiom4O3Ta6.jpg"
+      },
+      {
+        "name": "James Cromwell",
+        "character": "Warden Hal Moores",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/17AIez58rJyk7EzU5a9L2r6Tn3u.jpg"
+      }
+    ],
+    "youtubeTrailerId": "BlS73uqTu8A"
+  },
+  {
+    "tmdbId": 857,
+    "name": "Saving Private Ryan",
+    "type": "movie",
+    "overview": "As U.S. troops storm the beaches of Normandy, three brothers lie dead on the battlefield, with a fourth trapped behind enemy lines. Ranger captain John Miller and seven men are tasked with penetrating German-held territory and bringing the boy home.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/bdD39MpSVhKjxarTxLSfX6baoMP.jpg",
+    "releaseDate": "1998-07-24",
+    "rating": 8.223,
+    "genres": [
+      "War",
+      "Drama",
+      "History"
+    ],
+    "cast": [
+      {
+        "name": "Tom Hanks",
+        "character": "Captain Miller",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/oFvZoKI6lvU03n4YoNGAll9rkas.jpg"
+      },
+      {
+        "name": "Tom Sizemore",
+        "character": "Sergeant Horvath",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/soINOuacuiThRb2LyPD4tTWve7C.jpg"
+      },
+      {
+        "name": "Edward Burns",
+        "character": "Private Reiben",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/pTLdPUSxDUcdmvy91LGCF3pk0AM.jpg"
+      },
+      {
+        "name": "Barry Pepper",
+        "character": "Private Jackson",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/xBvW4dMoz496rItLQU6TGteYCEP.jpg"
+      },
+      {
+        "name": "Adam Goldberg",
+        "character": "Private Mellish",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/xEbqDqTWlSSCi4v8FI3S9YSEPJz.jpg"
+      }
+    ],
+    "youtubeTrailerId": "9CiW_DgxCnY"
+  },
+  {
+    "tmdbId": 807,
+    "name": "Se7en",
+    "type": "movie",
+    "overview": "Two homicide detectives are on a desperate hunt for a serial killer whose crimes are based on the \"seven deadly sins\" in this dark and haunting film that takes viewers from the tortured remains of one victim to the next. The seasoned Det. Somerset researches each sin in an effort to get inside the killer's mind, while his novice partner, Mills, scoffs at his efforts to unravel the case.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/191nKfP0ehp3uIvWqgPbFmI4lv9.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/i5H7zusQGsysGQ8i6P361Vnr0n2.jpg",
+    "releaseDate": "1995-09-22",
+    "rating": 8.38,
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "cast": [
+      {
+        "name": "Morgan Freeman",
+        "character": "Somerset",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/jPsLqiYGSofU4s6BjrxnefMfabb.jpg"
+      },
+      {
+        "name": "Brad Pitt",
+        "character": "Mills",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/r9DzKQLNbh5QfXlrFGHoVNKER7X.jpg"
+      },
+      {
+        "name": "Gwyneth Paltrow",
+        "character": "Tracy",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ylN4A7fnnNXvHURENl5sQI8Jbib.jpg"
+      },
+      {
+        "name": "John Cassini",
+        "character": "Officer Davis",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/kn2Rtn0I8ivCR7ydZTY74XUBh1K.jpg"
+      },
+      {
+        "name": "Peter Crombie",
+        "character": "Dr. O'Neill",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/pMvhE1wwQo3eTSp4vwq8Hb22CwN.jpg"
+      }
+    ],
+    "youtubeTrailerId": "Spik5DZMeN4"
+  },
+  {
+    "tmdbId": 637,
+    "name": "Life Is Beautiful",
+    "type": "movie",
+    "overview": "A touching story of an Italian book seller of Jewish ancestry who lives in his own little fairy tale. His creative and happy life would come to an abrupt halt when his entire family is deported to a concentration camp during World War II. While locked up he tries to convince his son that the whole thing is just a game.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/mfnkSeeVOBVheuyn2lo4tfmOPQb.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/6aNKD81RHR1DqUUa8kOZ1TBY1Lp.jpg",
+    "releaseDate": "1997-12-20",
+    "rating": 8.44,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "cast": [
+      {
+        "name": "Roberto Benigni",
+        "character": "Guido",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ba1Sg02XxCphu6E1dWDMAH1GzeE.jpg"
+      },
+      {
+        "name": "Nicoletta Braschi",
+        "character": "Dora",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/9IeE3Iz9HXZVTrvhjSCKlR4FLxB.jpg"
+      },
+      {
+        "name": "Giorgio Cantarini",
+        "character": "Giosué",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/1tKZHpVTYcw8EP3naVTZFlrOkhQ.jpg"
+      },
+      {
+        "name": "Giustino Durano",
+        "character": "Zio",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5VbG50qZNUnpx6UW7594RUlX7SZ.jpg"
+      },
+      {
+        "name": "Sergio Bini Bustric",
+        "character": "Ferruccio",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/crnlLn1SxP2LqbsXNr8CQrvaiNc.jpg"
+      }
+    ],
+    "youtubeTrailerId": "Cj9kRq37EoY"
+  },
+  {
+    "tmdbId": 1726,
+    "name": "Iron Man",
+    "type": "movie",
+    "overview": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/cKvDv2LpwVEqbdXWoQl4XgGN6le.jpg",
+    "releaseDate": "2008-04-30",
+    "rating": 7.657,
+    "genres": [
+      "Action",
+      "Science Fiction",
+      "Adventure"
+    ],
+    "cast": [
+      {
+        "name": "Robert Downey Jr.",
+        "character": "Tony Stark",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
+      },
+      {
+        "name": "Terrence Howard",
+        "character": "Rhodey",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/wXWt2NSY23v7DHe2yZQ1C8TikBp.jpg"
+      },
+      {
+        "name": "Jeff Bridges",
+        "character": "Obadiah Stane",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/6ItMc51AeORUz6iIQxGnX3HEZaB.jpg"
+      },
+      {
+        "name": "Gwyneth Paltrow",
+        "character": "Pepper Potts",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ylN4A7fnnNXvHURENl5sQI8Jbib.jpg"
+      },
+      {
+        "name": "Leslie Bibb",
+        "character": "Christine Everhart",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/g3a1O9lOTZvrwQupUtg4Fc3CdTd.jpg"
+      }
+    ],
+    "youtubeTrailerId": "8hYlB38asDY"
+  },
+  {
+    "tmdbId": 335984,
+    "name": "Blade Runner 2049",
+    "type": "movie",
+    "overview": "Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what's left of society into chaos. K's discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/askFH4GSk2u9z3ZE5ypdKIMeqLJ.jpg",
+    "releaseDate": "2017-10-04",
+    "rating": 7.591,
+    "genres": [
+      "Science Fiction",
+      "Drama"
+    ],
+    "cast": [
+      {
+        "name": "Ryan Gosling",
+        "character": "'K'",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/lyUyVARQKhGxaxy0FbPJCQRpiaW.jpg"
+      },
+      {
+        "name": "Harrison Ford",
+        "character": "Rick Deckard",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/pjBMJVPpcZK23Vt1nzr1zEBTWrP.jpg"
+      },
+      {
+        "name": "Ana de Armas",
+        "character": "Joi",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/3vxvsmYLTf4jnr163SUlBIw51ee.jpg"
+      },
+      {
+        "name": "Dave Bautista",
+        "character": "Sapper Morton",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/snk6JiXOOoRjPtHU5VMoy6qbd32.jpg"
+      },
+      {
+        "name": "Robin Wright",
+        "character": "Lieutenant Joshi",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/d3rIv0y2p0jMsQ7ViR7O1606NZa.jpg"
+      }
+    ],
+    "youtubeTrailerId": "gCcx85zbxz4"
+  },
+  {
+    "tmdbId": 653346,
+    "name": "Kingdom of the Planet of the Apes",
+    "type": "movie",
+    "overview": "Several generations following Caesar's reign, apes – now the dominant species – live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all he's known about the past and to make choices that will define a future for apes and humans alike.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/fqv8v6AycXKsivp1T5yKtLbGXce.jpg",
+    "releaseDate": "2024-05-08",
+    "rating": 7.1,
+    "genres": [
+      "Science Fiction",
+      "Adventure",
+      "Action"
+    ],
+    "cast": [
+      {
+        "name": "Owen Teague",
+        "character": "Noa",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/tgCkGE0LIggyjMmgSwHhpZAkfJs.jpg"
+      },
+      {
+        "name": "Freya Allan",
+        "character": "Nova / Mae",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8RuLG2mePw8YgFNUjWROBuxMrwT.jpg"
+      },
+      {
+        "name": "Kevin Durand",
+        "character": "Proximus Caesar",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/j5tjACRTKuuOzjywxw7kVtQ91k.jpg"
+      },
+      {
+        "name": "Peter Macon",
+        "character": "Raka",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/jF4jzgtWB2NAJ6BfVTSDQOlOHLr.jpg"
+      },
+      {
+        "name": "William H. Macy",
+        "character": "Trevathan",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/hdVEGSrP8qWlJnt0v5vSVcGOjy7.jpg"
+      }
+    ],
+    "youtubeTrailerId": "XtFI7SNtVpY"
+  },
+  {
+    "tmdbId": 1084736,
+    "name": "The Count of Monte Cristo",
+    "type": "movie",
+    "overview": "Edmond Dantès becomes the target of a sinister plot and is arrested on his wedding day for a crime he did not commit. After 14 years in the island prison of Château d’If, he manages a daring escape. Now rich beyond his dreams, he assumes the identity of the Count of Monte-Cristo and exacts his revenge on the three men who betrayed him.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/bxT8jFcWNuWK5LmVo1oGhAm4dnZ.jpg",
+    "releaseDate": "2024-06-28",
+    "rating": 7.916,
+    "genres": [
+      "Adventure",
+      "Action",
+      "Drama"
+    ],
+    "cast": [
+      {
+        "name": "Pierre Niney",
+        "character": "Edmond Dantès / The Count of Monte Cristo",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/ahICOyV41nhJ2q9LaVaHOridn2m.jpg"
+      },
+      {
+        "name": "Bastien Bouillon",
+        "character": "Fernand de Morcerf",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/8ksm25v40MS2p2y0EyyNrxdt7it.jpg"
+      },
+      {
+        "name": "Anaïs Demoustier",
+        "character": "Mercédès Herrera",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/kObYOu3UYkNcQGg1gnl4xitwhNc.jpg"
+      },
+      {
+        "name": "Laurent Lafitte",
+        "character": "Gérard de Villefort",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/9mTtfK5F9WMoYqvUvqlugnsX6SS.jpg"
+      },
+      {
+        "name": "Pierfrancesco Favino",
+        "character": "Abbé Faria",
+        "headshotUrl": "https://image.tmdb.org/t/p/w185/hedzgTKFKrSleWvLkBlANng8w4T.jpg"
+      }
+    ],
+    "youtubeTrailerId": "8Q6y1waxlTY"
+  }
+]
