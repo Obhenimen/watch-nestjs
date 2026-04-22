@@ -3,18 +3,14 @@ import {
   IsString,
   MinLength,
   IsOptional,
-  IsArray,
-  ArrayMinSize,
-  IsNumber,
   IsUrl,
   Matches,
+  MaxLength,
 } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class SignupDto {
-  // ── Step 1: Account ────────────────────────────────────────────────────
-  @IsString()
-  name: string;
-
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim().toLowerCase() : value))
   @IsEmail()
   email: string;
 
@@ -22,30 +18,23 @@ export class SignupDto {
   @MinLength(8)
   password: string;
 
-  // ── Step 2: Profile ────────────────────────────────────────────────────
   @IsString()
   @Matches(/^@?[a-zA-Z0-9_]{3,30}$/, {
     message: 'Username may only contain letters, numbers and underscores (3–30 chars)',
   })
   username: string;
 
+  @IsString()
+  @MinLength(1)
+  @MaxLength(100)
+  displayName: string;
+
   @IsOptional()
   @IsString()
+  @MaxLength(300)
   bio?: string;
 
   @IsOptional()
   @IsUrl()
-  profilePictureUrl?: string;
-
-  // ── Step 3: Genres (min 3) ─────────────────────────────────────────────
-  @IsArray()
-  @ArrayMinSize(3, { message: 'Please select at least 3 genres' })
-  @IsString({ each: true })
-  genres: string[];
-
-  // ── Step 4: Watched movies (min 1) ─────────────────────────────────────
-  @IsArray()
-  @ArrayMinSize(1, { message: 'Please select at least 1 movie' })
-  @IsNumber({}, { each: true })
-  watchedMovieIds: number[];
+  avatarUrl?: string;
 }

@@ -1,52 +1,34 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
 
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  name: string;
-
   @Column({ unique: true })
   email: string;
 
-  /** Stored as bcrypt hash — never expose in responses */
-  @Column({ select: false })
-  password: string;
+  @Column({ name: 'password_hash', select: false })
+  passwordHash: string;
 
   @Column({ unique: true })
   username: string;
 
+  @Column({ name: 'display_name' })
+  displayName: string;
+
   @Column({ nullable: true, type: 'text' })
   bio: string | null;
 
-  @Column({ nullable: true, name: 'profile_picture_url', type: 'text' })
-  profilePictureUrl: string | null;
+  @Column({ nullable: true, name: 'avatar_url', type: 'text' })
+  avatarUrl: string | null;
 
-  /**
-   * Favourite genres chosen during onboarding (min 3).
-   * Stored as a comma-separated string by TypeORM simple-array.
-   */
-  @Column({ type: 'simple-array' })
-  genres: string[];
+  @Column({ name: 'followers_count', default: 0 })
+  followersCount: number;
 
-  /**
-   * IDs of movies the user has watched (from the onboarding catalogue).
-   * Stored as a comma-separated list of numbers.
-   */
-  @Column({ type: 'simple-array' })
-  watchedMovieIds: number[];
+  @Column({ name: 'following_count', default: 0 })
+  followingCount: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
-
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
 }

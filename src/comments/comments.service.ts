@@ -1,18 +1,16 @@
 import {
-  BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IsNull, Repository } from 'typeorm';
+import { In, IsNull, Repository } from 'typeorm';
 import { Comment } from './entities/comment.entity';
 import { CommentLike } from './entities/comment-like.entity';
 import { Post } from '../posts/entities/post.entity';
 import { User } from '../users/entities/user.entity';
+import { NotificationsService } from '../notifications/notifications.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
-
-const MAX_DEPTH = 3;
 
 @Injectable()
 export class CommentsService {
@@ -25,123 +23,124 @@ export class CommentsService {
 
     @InjectRepository(Post)
     private readonly postRepo: Repository<Post>,
+
+    private readonly notificationsService: NotificationsService,
   ) {}
 
   // ── Create ──────────────────────────────────────────────────────────────────
 
-  async create(
-    postId: string,
-    author: User,
-    dto: CreateCommentDto,
-  ): Promise<Comment> {
-    const post = await this.postRepo.findOne({ where: { id: postId, isDeleted: false } });
+  async create(postId: string, author: User, dto: CreateCommentDto): Promise<Comment> {
+    const post = await this.postRepo.findOne({ where: { id: postId } });
     if (!post) throw new NotFoundException('Post not found');
 
-    let depth = 0;
+    let parentUserId: string | null = null;
 
-    if (dto.parentCommentId) {
+    if (dto.parentId) {
       const parent = await this.commentRepo.findOne({
-        where: { id: dto.parentCommentId, postId, isDeleted: false },
+        where: { id: dto.parentId, postId },
       });
-      if (!parent) {
-        throw new NotFoundException('Parent comment not found on this post');
-      }
-      depth = parent.depth + 1;
-      if (depth > MAX_DEPTH) {
-        throw new BadRequestException(
-          `Maximum comment nesting depth of ${MAX_DEPTH} reached.`,
-        );
-      }
-      // Increment parent's replyCount
-      await this.commentRepo.increment({ id: parent.id }, 'replyCount', 1);
+      if (!parent) throw new NotFoundException('Parent comment not found on this post');
+      parentUserId = parent.userId;
     }
 
-    const comment = this.commentRepo.create({
-      postId,
-      userId: author.id,
-      parentCommentId: dto.parentCommentId ?? null,
-      content: dto.content,
-      hasSpoiler: dto.hasSpoiler ?? false,
-      depth,
-    });
-
-    const saved = await this.commentRepo.save(comment);
-
-    // Increment post commentCount
-    await this.postRepo.increment({ id: postId }, 'commentCount', 1);
-
-    return this.findById(saved.id, author.id);
-  }
-
-  // ── List top-level comments for a post ──────────────────────────────────────
-
-  async findByPost(
-    postId: string,
-    viewerId: string,
-    limit = 20,
-    offset = 0,
-  ): Promise<{ comments: Comment[]; total: number }> {
-    const post = await this.postRepo.findOne({ where: { id: postId, isDeleted: false } });
-    if (!post) throw new NotFoundException('Post not found');
-
-    const [comments, total] = await this.commentRepo.findAndCount({
-      where: { postId, parentCommentId: IsNull() },
-      relations: ['author'],
-      order: { createdAt: 'ASC' },
-      skip: offset,
-      take: limit,
-    });
-
-    // Attach viewerHasLiked
-    const ids = comments.map((c) => c.id);
-    const viewerLikes = ids.length
-      ? await this.likeRepo
-          .createQueryBuilder('cl')
-          .where('cl.user_id = :uid', { uid: viewerId })
-          .andWhere('cl.comment_id IN (:...ids)', { ids })
-          .getMany()
-      : [];
-
-    const likedSet = new Set(viewerLikes.map((l) => l.commentId));
-    const enriched = comments.map((c) =>
-      Object.assign(c, { viewerHasLiked: likedSet.has(c.id) }),
+    const comment = await this.commentRepo.save(
+      this.commentRepo.create({
+        postId,
+        userId: author.id,
+        parentId: dto.parentId ?? null,
+        body: dto.body,
+      }),
     );
 
-    return { comments: enriched, total };
+    await this.postRepo.increment({ id: postId }, 'commentsCount', 1);
+
+    if (dto.parentId && parentUserId) {
+      await this.notificationsService.create({
+        recipientId: parentUserId,
+        actorId: author.id,
+        type: 'comment_reply',
+        postId,
+        commentId: comment.id,
+      });
+    } else {
+      await this.notificationsService.create({
+        recipientId: post.userId,
+        actorId: author.id,
+        type: 'post_comment',
+        postId,
+        commentId: comment.id,
+      });
+    }
+
+    return this.findById(comment.id, author.id);
   }
 
-  // ── Replies for a single comment ─────────────────────────────────────────────
+  // ── List top-level comments ──────────────────────────────────────────────────
 
-  async findReplies(
-    commentId: string,
-    viewerId: string,
-    limit = 20,
-    offset = 0,
-  ): Promise<{ comments: Comment[]; total: number }> {
+  async findByPost(postId: string, viewerId: string, limit = 20, cursor?: string) {
+    const post = await this.postRepo.findOne({ where: { id: postId } });
+    if (!post) throw new NotFoundException('Post not found');
+
+    const qb = this.commentRepo
+      .createQueryBuilder('c')
+      .leftJoinAndSelect('c.author', 'author')
+      .where('c.postId = :postId', { postId })
+      .andWhere('c.parentId IS NULL')
+      .orderBy('c.createdAt', 'ASC')
+      .take(limit + 1);
+
+    if (cursor) {
+      qb.andWhere('c.createdAt > :cursor', { cursor });
+    }
+
+    const rows = await qb.getMany();
+    const hasNextPage = rows.length > limit;
+    const comments = hasNextPage ? rows.slice(0, limit) : rows;
+
+    const ids = comments.map((c) => c.id);
+    const viewerLikes = ids.length
+      ? await this.likeRepo.find({ where: { userId: viewerId, commentId: In(ids) } })
+      : [];
+    const likedSet = new Set(viewerLikes.map((l) => l.commentId));
+
+    return {
+      comments: comments.map((c) => Object.assign(c, { likedByMe: likedSet.has(c.id) })),
+      nextCursor: hasNextPage ? comments[comments.length - 1].createdAt.toISOString() : null,
+      hasNextPage,
+    };
+  }
+
+  // ── Replies ─────────────────────────────────────────────────────────────────
+
+  async findReplies(commentId: string, viewerId: string, limit = 20, cursor?: string) {
     const parent = await this.commentRepo.findOne({ where: { id: commentId } });
     if (!parent) throw new NotFoundException('Comment not found');
 
-    const [replies, total] = await this.commentRepo.findAndCount({
-      where: { parentCommentId: commentId },
-      relations: ['author'],
-      order: { createdAt: 'ASC' },
-      skip: offset,
-      take: limit,
-    });
+    const qb = this.commentRepo
+      .createQueryBuilder('c')
+      .leftJoinAndSelect('c.author', 'author')
+      .where('c.parentId = :commentId', { commentId })
+      .orderBy('c.createdAt', 'ASC')
+      .take(limit + 1);
+
+    if (cursor) {
+      qb.andWhere('c.createdAt > :cursor', { cursor });
+    }
+
+    const rows = await qb.getMany();
+    const hasNextPage = rows.length > limit;
+    const replies = hasNextPage ? rows.slice(0, limit) : rows;
 
     const ids = replies.map((c) => c.id);
     const viewerLikes = ids.length
-      ? await this.likeRepo
-          .createQueryBuilder('cl')
-          .where('cl.user_id = :uid', { uid: viewerId })
-          .andWhere('cl.comment_id IN (:...ids)', { ids })
-          .getMany()
+      ? await this.likeRepo.find({ where: { userId: viewerId, commentId: In(ids) } })
       : [];
-
     const likedSet = new Set(viewerLikes.map((l) => l.commentId));
+
     return {
-      comments: replies.map((c) => Object.assign(c, { viewerHasLiked: likedSet.has(c.id) })),
-      total,
+      comments: replies.map((c) => Object.assign(c, { likedByMe: likedSet.has(c.id) })),
+      nextCursor: hasNextPage ? replies[replies.length - 1].createdAt.toISOString() : null,
+      hasNextPage,
     };
   }
 
@@ -155,10 +154,8 @@ export class CommentsService {
     if (!comment) throw new NotFoundException('Comment not found');
 
     if (viewerId) {
-      const like = await this.likeRepo.findOne({
-        where: { userId: viewerId, commentId },
-      });
-      Object.assign(comment, { viewerHasLiked: !!like });
+      const like = await this.likeRepo.findOne({ where: { userId: viewerId, commentId } });
+      Object.assign(comment, { likedByMe: !!like });
     }
 
     return comment;
@@ -166,26 +163,28 @@ export class CommentsService {
 
   // ── Like / unlike ──────────────────────────────────────────────────────────
 
-  async toggleLike(
-    commentId: string,
-    userId: string,
-  ): Promise<{ liked: boolean; likeCount: number }> {
-    const comment = await this.commentRepo.findOne({ where: { id: commentId, isDeleted: false } });
+  async toggleLike(commentId: string, userId: string) {
+    const comment = await this.commentRepo.findOne({ where: { id: commentId } });
     if (!comment) throw new NotFoundException('Comment not found');
 
     const existing = await this.likeRepo.findOne({ where: { userId, commentId } });
 
     if (existing) {
       await this.likeRepo.remove(existing);
-      await this.commentRepo.decrement({ id: commentId }, 'likeCount', 1);
-      const updated = await this.commentRepo.findOneOrFail({ where: { id: commentId } });
-      return { liked: false, likeCount: updated.likeCount };
+      await this.commentRepo.decrement({ id: commentId }, 'likesCount', 1);
     } else {
       await this.likeRepo.save(this.likeRepo.create({ userId, commentId }));
-      await this.commentRepo.increment({ id: commentId }, 'likeCount', 1);
-      const updated = await this.commentRepo.findOneOrFail({ where: { id: commentId } });
-      return { liked: true, likeCount: updated.likeCount };
+      await this.commentRepo.increment({ id: commentId }, 'likesCount', 1);
+      await this.notificationsService.create({
+        recipientId: comment.userId,
+        actorId: userId,
+        type: 'comment_like',
+        commentId,
+      });
     }
+
+    const updated = await this.commentRepo.findOneOrFail({ where: { id: commentId } });
+    return { liked: !existing, likesCount: updated.likesCount };
   }
 
   // ── Delete ─────────────────────────────────────────────────────────────────
@@ -196,6 +195,7 @@ export class CommentsService {
     if (comment.userId !== requesterId) {
       throw new ForbiddenException('You can only delete your own comments');
     }
-    await this.commentRepo.update(commentId, { isDeleted: true });
+    await this.commentRepo.remove(comment);
+    await this.postRepo.decrement({ id: comment.postId }, 'commentsCount', 1);
   }
 }

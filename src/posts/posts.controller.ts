@@ -8,12 +8,13 @@ import {
   Query,
   UseGuards,
   UseInterceptors,
-  UploadedFiles,
+  UploadedFile,
   ParseUUIDPipe,
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
-import { FilesInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { ApiTags, ApiBearerAuth, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
@@ -22,72 +23,62 @@ import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { User } from '../users/entities/user.entity';
 import { postMediaMulterOptions } from '../common/multer/multer.config';
 
+@ApiTags('Posts')
+@ApiBearerAuth('access-token')
 @Controller('posts')
 @UseGuards(JwtAuthGuard)
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  /**
-   * GET /posts/feed
-   * Returns the personalised "For You" feed for the authenticated user.
-   * Ranked by engagement score weighted by recency.
-   */
   @Get('feed')
   getFeed(@CurrentUser() user: User, @Query() query: FeedQueryDto) {
     return this.postsService.getFeed(user, query);
   }
 
-  /**
-   * POST /posts
-   * Creates a new post, optionally with images/videos attached.
-   * Accepts multipart/form-data: fields = CreatePostDto, files = media (key: "media").
-   */
   @Post()
-  @UseInterceptors(FilesInterceptor('media', 10, postMediaMulterOptions))
+  @UseInterceptors(FileInterceptor('media', postMediaMulterOptions))
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        hubId:      { type: 'string', format: 'uuid' },
+        title:      { type: 'string' },
+        body:       { type: 'string' },
+        hasSpoiler: { type: 'boolean' },
+        media:      { type: 'string', format: 'binary' },
+      },
+      required: ['hubId', 'body'],
+    },
+  })
   createPost(
     @CurrentUser() user: User,
     @Body() dto: CreatePostDto,
-    @UploadedFiles() files: Express.Multer.File[],
+    @UploadedFile() file?: Express.Multer.File,
   ) {
-    return this.postsService.create(user, dto, files ?? []);
+    return this.postsService.create(user, dto, file);
   }
 
-  /**
-   * GET /posts/:id
-   * Returns a single post with its author, hub, and media.
-   * Also increments the view count.
-   */
   @Get(':id')
-  getPost(
-    @Param('id', ParseUUIDPipe) id: string,
-    @CurrentUser() user: User,
-  ) {
+  getPost(@Param('id', ParseUUIDPipe) id: string, @CurrentUser() user: User) {
     return this.postsService.findById(id, user.id);
   }
 
-  /**
-   * POST /posts/:id/like
-   * Toggles a like on the post. Returns the new liked state and like count.
-   */
   @Post(':id/like')
   @HttpCode(HttpStatus.OK)
-  toggleLike(
-    @Param('id', ParseUUIDPipe) id: string,
-    @CurrentUser() user: User,
-  ) {
+  toggleLike(@Param('id', ParseUUIDPipe) id: string, @CurrentUser() user: User) {
     return this.postsService.toggleLike(id, user.id);
   }
 
-  /**
-   * DELETE /posts/:id
-   * Soft-deletes the post. Only the author may delete their own post.
-   */
+  @Post(':id/repost')
+  @HttpCode(HttpStatus.OK)
+  toggleRepost(@Param('id', ParseUUIDPipe) id: string, @CurrentUser() user: User) {
+    return this.postsService.toggleRepost(id, user.id);
+  }
+
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  removePost(
-    @Param('id', ParseUUIDPipe) id: string,
-    @CurrentUser() user: User,
-  ) {
+  removePost(@Param('id', ParseUUIDPipe) id: string, @CurrentUser() user: User) {
     return this.postsService.remove(id, user.id);
   }
 }

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>App ERD Schema</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #fff;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 2rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #161615; color: #e0ddd6; }
+    }
+    h1 { font-size: 20px; font-weight: 500; margin: 0 0 0.25rem; }
+    p  { font-size: 13px; color: #888; margin: 0 0 1.5rem; }
+    #erd { overflow-x: auto; }
+    #erd svg { width: 100% !important; min-width: 900px; }
+    #loading { font-size: 13px; color: #888; padding: 2rem 0; }
+  </style>
+</head>
+<body>
+  <h1>App ERD Schema</h1>
+  <p>13 tables · Users · Title Hubs · Posts · Comments · Likes · Comment Likes · Reposts · User Follows · Hub Follows · Lists · List Items · Notifications</p>
+  <div id="loading">Rendering diagram...</div>
+  <div id="erd" class="mermaid">
+erDiagram
+
+  USERS {
+    text id PK
+    text email
+    text password_hash
+    text username
+    text display_name
+    text bio
+    text avatar_url
+    int followers_count
+    int following_count
+    text created_at
+  }
+
+  TITLE_HUBS {
+    text id PK
+    text name
+    int year
+    text type
+    text genres
+    text director
+    text icon_url
+    text backdrop_url
+    text description
+    int followers_count
+    int posts_count
+    int trending_score
+    text created_at
+  }
+
+  POSTS {
+    text id PK
+    text user_id FK
+    text hub_id FK
+    text title
+    text body
+    text media_type
+    text image_url
+    text video_url
+    text video_thumbnail_url
+    int video_duration_secs
+    int has_spoiler
+    int likes_count
+    int reposts_count
+    int comments_count
+    text created_at
+    text updated_at
+  }
+
+  COMMENTS {
+    text id PK
+    text post_id FK
+    text user_id FK
+    text parent_id FK
+    text body
+    int likes_count
+    text created_at
+    text updated_at
+  }
+
+  LIKES {
+    text user_id FK
+    text post_id FK
+    text created_at
+  }
+
+  COMMENT_LIKES {
+    text user_id FK
+    text comment_id FK
+    text created_at
+  }
+
+  REPOSTS {
+    text user_id FK
+    text post_id FK
+    text created_at
+  }
+
+  USER_FOLLOWS {
+    text follower_id FK
+    text following_id FK
+    text created_at
+  }
+
+  HUB_FOLLOWS {
+    text user_id FK
+    text hub_id FK
+    text created_at
+  }
+
+  LISTS {
+    text id PK
+    text user_id FK
+    text list_type
+    text name
+    text emoji
+    text description
+    int is_default
+    int is_public
+    int items_count
+    text created_at
+  }
+
+  LIST_ITEMS {
+    text list_id FK
+    text hub_id FK
+    text status
+    text added_at
+  }
+
+  NOTIFICATIONS {
+    text id PK
+    text recipient_id FK
+    text actor_id FK
+    text type
+    text post_id FK
+    text comment_id FK
+    text hub_id FK
+    int is_read
+    text created_at
+  }
+
+  USERS ||--o{ POSTS : "writes"
+  USERS ||--o{ COMMENTS : "writes"
+  USERS ||--o{ LIKES : "gives"
+  USERS ||--o{ COMMENT_LIKES : "gives"
+  USERS ||--o{ REPOSTS : "makes"
+  USERS ||--o{ USER_FOLLOWS : "follower"
+  USERS ||--o{ USER_FOLLOWS : "following"
+  USERS ||--o{ HUB_FOLLOWS : "follows"
+  USERS ||--o{ LISTS : "owns"
+  USERS ||--o{ NOTIFICATIONS : "receives"
+  TITLE_HUBS ||--o{ POSTS : "contains"
+  TITLE_HUBS ||--o{ HUB_FOLLOWS : "has"
+  TITLE_HUBS ||--o{ LIST_ITEMS : "in"
+  POSTS ||--o{ COMMENTS : "has"
+  POSTS ||--o{ LIKES : "receives"
+  POSTS ||--o{ REPOSTS : "receives"
+  POSTS ||--o{ NOTIFICATIONS : "triggers"
+  COMMENTS ||--o{ COMMENTS : "replies"
+  COMMENTS ||--o{ COMMENT_LIKES : "receives"
+  LISTS ||--o{ LIST_ITEMS : "contains"
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>
+    const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        darkMode: dark,
+        fontSize: '13px',
+        lineColor: dark ? '#9c9a92' : '#73726c',
+        textColor: dark ? '#c2c0b6' : '#3d3d3a',
+        primaryColor: dark ? '#2a2a28' : '#f5f4f0',
+        primaryBorderColor: dark ? '#4a4a46' : '#c8c6be',
+      },
+      er: {
+        diagramPadding: 20,
+        layoutDirection: 'TB',
+        minEntityWidth: 100,
+        minEntityHeight: 75,
+        entityPadding: 15
+      }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => { document.getElementById('loading').style.display = 'none'; }, 800);
+    });
+  </script>
+</body>
+</html>

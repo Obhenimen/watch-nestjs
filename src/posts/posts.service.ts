@@ -7,59 +7,16 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
 import { Post } from './entities/post.entity';
-import { PostMedia } from './entities/post-media.entity';
-import { PostLike } from './entities/post-like.entity';
+import { Like } from './entities/post-like.entity';
+import { Repost } from './entities/repost.entity';
 import { Hub } from '../hubs/entities/hub.entity';
+import { HubFollow } from '../hubs/entities/hub-follow.entity';
 import { User } from '../users/entities/user.entity';
 import { Comment } from '../comments/entities/comment.entity';
+import { NotificationsService } from '../notifications/notifications.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
-import {
-  mediaUrl,
-  isImage,
-  isVideo,
-  MAX_IMAGE_SIZE,
-} from '../common/multer/multer.config';
-
-/** Shape returned by the feed — matches the mobile FeedPost type exactly */
-export interface FeedPost {
-  id: string;
-  userId: string;
-  hubId: string;
-  title: string;
-  content: string;
-  hasSpoiler: boolean;
-  youtubeUrl: string | null;
-  mediaUrls: string[];
-  likeCount: number;
-  commentCount: number;
-  repostCount: number;
-  viewCount: number;
-  isHot: boolean;
-  isPinned: boolean;
-  isDeleted: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  viewerHasLiked: boolean;
-  author: { id: string; username: string; name: string; profilePictureUrl: string | null } | null;
-  hub: Hub | null;
-  topComments: FeedComment[];
-}
-
-export interface FeedComment {
-  id: string;
-  postId: string;
-  userId: string;
-  parentCommentId: string | null;
-  content: string;
-  hasSpoiler: boolean;
-  likeCount: number;
-  replyCount: number;
-  depth: number;
-  createdAt: Date;
-  updatedAt: Date;
-  author: { id: string; username: string; name: string; profilePictureUrl: string | null } | null;
-}
+import { isImage, isVideo, MAX_IMAGE_SIZE, mediaUrl } from '../common/multer/multer.config';
 
 @Injectable()
 export class PostsService {
@@ -67,268 +24,273 @@ export class PostsService {
     @InjectRepository(Post)
     private readonly postRepo: Repository<Post>,
 
-    @InjectRepository(PostMedia)
-    private readonly mediaRepo: Repository<PostMedia>,
+    @InjectRepository(Like)
+    private readonly likeRepo: Repository<Like>,
 
-    @InjectRepository(PostLike)
-    private readonly likeRepo: Repository<PostLike>,
+    @InjectRepository(Repost)
+    private readonly repostRepo: Repository<Repost>,
 
     @InjectRepository(Hub)
     private readonly hubRepo: Repository<Hub>,
 
+    @InjectRepository(HubFollow)
+    private readonly hubFollowRepo: Repository<HubFollow>,
+
     @InjectRepository(Comment)
     private readonly commentRepo: Repository<Comment>,
+
+    private readonly notificationsService: NotificationsService,
   ) {}
-
-  // ── Helpers ──────────────────────────────────────────────────────────────────
-
-  private shapeAuthor(user: User | null | undefined) {
-    if (!user) return null;
-    return {
-      id: user.id,
-      username: user.username,
-      name: user.name,
-      profilePictureUrl: user.profilePictureUrl ?? null,
-    };
-  }
-
-  private shapeComment(c: Comment): FeedComment {
-    return {
-      id: c.id,
-      postId: c.postId,
-      userId: c.userId,
-      parentCommentId: c.parentCommentId,
-      content: c.content,
-      hasSpoiler: c.hasSpoiler,
-      likeCount: c.likeCount,
-      replyCount: c.replyCount,
-      depth: c.depth,
-      createdAt: c.createdAt,
-      updatedAt: c.updatedAt,
-      author: this.shapeAuthor(c.author),
-    };
-  }
-
-  private shapePost(
-    post: Post,
-    viewerHasLiked: boolean,
-    topComments: Comment[],
-  ): FeedPost {
-    return {
-      id: post.id,
-      userId: post.userId,
-      hubId: post.hubId,
-      title: post.title,
-      content: post.content,
-      hasSpoiler: post.hasSpoiler,
-      youtubeUrl: post.youtubeUrl ?? null,
-      mediaUrls: (post.media ?? []).map((m) =>
-        m.url.startsWith('http') ? m.url : `${process.env.API_BASE_URL ?? `http://localhost:${process.env.PORT ?? 3000}`}${m.url}`,
-      ),
-      likeCount: post.likeCount,
-      commentCount: post.commentCount,
-      repostCount: post.repostCount,
-      viewCount: post.viewCount,
-      isHot: post.isHot,
-      isPinned: post.isPinned,
-      isDeleted: post.isDeleted,
-      createdAt: post.createdAt,
-      updatedAt: post.updatedAt,
-      viewerHasLiked,
-      author: this.shapeAuthor(post.author),
-      hub: post.hub ?? null,
-      topComments: topComments.map((c) => this.shapeComment(c)),
-    };
-  }
 
   // ── Create ──────────────────────────────────────────────────────────────────
 
-  async create(
-    author: User,
-    dto: CreatePostDto,
-    files: Express.Multer.File[],
-  ): Promise<FeedPost> {
+  async create(author: User, dto: CreatePostDto, file?: Express.Multer.File) {
     const hub = await this.hubRepo.findOne({ where: { id: dto.hubId } });
     if (!hub) throw new NotFoundException(`Hub "${dto.hubId}" not found`);
 
-    for (const file of files) {
-      if (isImage(file.mimetype) && file.size > MAX_IMAGE_SIZE) {
-        throw new BadRequestException(
-          `Image "${file.originalname}" exceeds the 10 MB limit.`,
-        );
+    let mediaType: 'none' | 'image' | 'video' = 'none';
+    let imageUrl: string | null = null;
+    let videoUrl: string | null = null;
+
+    if (file) {
+      if (isImage(file.mimetype)) {
+        if (file.size > MAX_IMAGE_SIZE) {
+          throw new BadRequestException(`Image "${file.originalname}" exceeds the 10 MB limit.`);
+        }
+        mediaType = 'image';
+        imageUrl = mediaUrl(file.filename);
+      } else if (isVideo(file.mimetype)) {
+        mediaType = 'video';
+        videoUrl = mediaUrl(file.filename);
       }
     }
 
-    const post = this.postRepo.create({
-      userId: author.id,
-      hubId: hub.id,
-      title: dto.title,
-      content: dto.content,
-      hasSpoiler: dto.hasSpoiler ?? false,
-      youtubeUrl: dto.youtubeUrl ?? null,
-    });
+    const post = await this.postRepo.save(
+      this.postRepo.create({
+        userId: author.id,
+        hubId: hub.id,
+        title: dto.title ?? null,
+        body: dto.body,
+        hasSpoiler: dto.hasSpoiler ?? false,
+        mediaType,
+        imageUrl,
+        videoUrl,
+      }),
+    );
 
-    const savedPost = await this.postRepo.save(post);
-
-    if (files.length > 0) {
-      const mediaEntities = files.map((file, index) =>
-        this.mediaRepo.create({
-          postId: savedPost.id,
-          url: mediaUrl(file.filename),
-          type: isVideo(file.mimetype) ? 'video' : 'image',
-          mimeType: file.mimetype,
-          sizeBytes: file.size,
-          displayOrder: index,
-        }),
-      );
-      await this.mediaRepo.save(mediaEntities);
-    }
-
-    await this.hubRepo.increment({ id: hub.id }, 'postCount', 1);
-
-    return this.findById(savedPost.id, author.id);
+    await this.hubRepo.increment({ id: hub.id }, 'postsCount', 1);
+    return this.findById(post.id, author.id);
   }
 
-  // ── Feed ────────────────────────────────────────────────────────────────────
+  // ── Feed (cursor-based, from followed hubs) ─────────────────────────────────
 
-  async getFeed(
-    viewer: User,
-    query: FeedQueryDto,
-  ): Promise<{ posts: FeedPost[]; total: number }> {
-    const { limit = 20, offset = 0 } = query;
+  async getFeed(viewer: User, query: FeedQueryDto) {
+    const { limit = 20, cursor } = query;
+
+    const followedHubs = await this.hubFollowRepo.find({
+      where: { userId: viewer.id },
+      select: ['hubId'],
+    });
+
+    if (!followedHubs.length) {
+      return { posts: [], nextCursor: null, hasNextPage: false };
+    }
+
+    const hubIds = followedHubs.map((hf) => hf.hubId);
 
     const qb = this.postRepo
       .createQueryBuilder('post')
       .leftJoinAndSelect('post.author', 'author')
       .leftJoinAndSelect('post.hub', 'hub')
-      .leftJoinAndSelect('post.media', 'media')
-      .where('post.isDeleted = :deleted', { deleted: false });
+      .where('post.hubId IN (:...hubIds)', { hubIds })
+      .orderBy('post.createdAt', 'DESC')
+      .take(limit + 1);
 
-    // Personalisation: match by genre or by movies the user has watched
-    if (viewer.genres?.length || viewer.watchedMovieIds?.length) {
-      const conditions: string[] = [];
-      const params: Record<string, unknown> = {};
-
-      if (viewer.genres?.length) {
-        viewer.genres.forEach((genre, i) => {
-          conditions.push(`hub.genres LIKE :genre${i}`);
-          params[`genre${i}`] = `%${genre}%`;
-        });
-      }
-
-      if (viewer.watchedMovieIds?.length) {
-        conditions.push('hub.tmdbId IN (:...tmdbIds)');
-        params['tmdbIds'] = viewer.watchedMovieIds;
-      }
-
-      // Always include trending posts regardless of hub match
-      conditions.push('post.isHot = :hot');
-      params['hot'] = true;
-
-      qb.andWhere(`(${conditions.join(' OR ')})`, params);
+    if (cursor) {
+      qb.andWhere('post.createdAt < :cursor', { cursor });
     }
 
-    // getManyAndCount() + arithmetic/combined ORDER BY breaks TypeORM 0.3
-    // (createOrderByCombinedWithSelectExpression → undefined metadata / databaseName).
-    // Count without ORDER BY, then load rows with simple column sorts only.
-    const total = await qb.clone().getCount();
+    const rows = await qb.getMany();
+    const hasNextPage = rows.length > limit;
+    const posts = hasNextPage ? rows.slice(0, limit) : rows;
 
-    qb.orderBy('post.isHot', 'DESC')
-      .addOrderBy('post.likeCount', 'DESC')
-      .addOrderBy('post.commentCount', 'DESC')
-      .addOrderBy('post.createdAt', 'DESC');
-
-    const posts = await qb.skip(offset).take(limit).getMany();
-
-    if (posts.length === 0) return { posts: [], total };
+    if (!posts.length) return { posts: [], nextCursor: null, hasNextPage: false };
 
     const postIds = posts.map((p) => p.id);
-
-    // Batch: which posts the viewer has liked
-    const viewerLikes = await this.likeRepo.find({
-      where: { userId: viewer.id, postId: In(postIds) },
-    });
+    const [viewerLikes, viewerReposts, allTopComments] = await Promise.all([
+      this.likeRepo.find({ where: { userId: viewer.id, postId: In(postIds) } }),
+      this.repostRepo.find({ where: { userId: viewer.id, postId: In(postIds) } }),
+      this.commentRepo
+        .createQueryBuilder('c')
+        .leftJoinAndSelect('c.author', 'author')
+        .where('c.postId IN (:...postIds)', { postIds })
+        .andWhere('c.parentId IS NULL')
+        .orderBy('c.createdAt', 'DESC')
+        .getMany(),
+    ]);
     const likedSet = new Set(viewerLikes.map((l) => l.postId));
+    const repostedSet = new Set(viewerReposts.map((r) => r.postId));
 
-    // Batch: fetch top 3 comments per post (by likes then by date)
-    const allTopComments = await this.commentRepo
-      .createQueryBuilder('c')
-      .leftJoinAndSelect('c.author', 'author')
-      .where('c.postId IN (:...ids)', { ids: postIds })
-      .andWhere('c.parentCommentId IS NULL')
-      .andWhere('c.isDeleted = false')
-      .orderBy('c.likeCount', 'DESC')
-      .addOrderBy('c.createdAt', 'ASC')
-      .getMany();
-
-    // Group comments by postId, take top 3 each
-    const commentsByPost = new Map<string, Comment[]>();
+    // Group top-level comments by postId, keeping the 2 most recent per post.
+    const topCommentsByPost = new Map<string, typeof allTopComments>();
     for (const c of allTopComments) {
-      const list = commentsByPost.get(c.postId) ?? [];
-      if (list.length < 3) list.push(c);
-      commentsByPost.set(c.postId, list);
+      const list = topCommentsByPost.get(c.postId) ?? [];
+      if (list.length < 2) {
+        list.push(c);
+        topCommentsByPost.set(c.postId, list);
+      }
     }
 
-    const shaped = posts.map((p) =>
-      this.shapePost(p, likedSet.has(p.id), commentsByPost.get(p.id) ?? []),
-    );
+    return {
+      posts: posts.map((p) =>
+        this.shape(
+          p,
+          likedSet.has(p.id),
+          repostedSet.has(p.id),
+          topCommentsByPost.get(p.id) ?? [],
+        ),
+      ),
+      nextCursor: hasNextPage ? posts[posts.length - 1].createdAt.toISOString() : null,
+      hasNextPage,
+    };
+  }
 
-    return { posts: shaped, total };
+  // ── Hub posts feed ───────────────────────────────────────────────────────────
+
+  async getHubPosts(
+    hubId: string,
+    viewerId: string,
+    sort: 'new' | 'top' | 'trending' = 'new',
+    limit = 20,
+    cursor?: string,
+  ) {
+    const hub = await this.hubRepo.findOne({ where: { id: hubId } });
+    if (!hub) throw new NotFoundException('Hub not found');
+
+    const qb = this.postRepo
+      .createQueryBuilder('post')
+      .leftJoinAndSelect('post.author', 'author')
+      .leftJoinAndSelect('post.hub', 'hub')
+      .where('post.hubId = :hubId', { hubId })
+      .take(limit + 1);
+
+    if (sort === 'top') {
+      qb.orderBy('post.likesCount', 'DESC').addOrderBy('post.createdAt', 'DESC');
+    } else if (sort === 'trending') {
+      // Use snake_case column names — addSelect raw SQL is not rewritten by
+      // TypeORM. No hard time window: the score already favours active posts,
+      // and a 30-day cutoff hides every post when seed data is older.
+      qb.addSelect(
+        '(post.likes_count * 3 + post.reposts_count * 2 + post.comments_count)',
+        'score',
+      )
+        .orderBy('score', 'DESC')
+        .addOrderBy('post.createdAt', 'DESC');
+    } else {
+      qb.orderBy('post.createdAt', 'DESC');
+    }
+
+    if (cursor && sort === 'new') {
+      qb.andWhere('post.createdAt < :cursor', { cursor });
+    }
+
+    const rows = await qb.getMany();
+    const hasNextPage = rows.length > limit;
+    const posts = hasNextPage ? rows.slice(0, limit) : rows;
+
+    if (!posts.length) return { posts: [], nextCursor: null, hasNextPage: false };
+
+    const postIds = posts.map((p) => p.id);
+    const [viewerLikes, viewerReposts] = await Promise.all([
+      this.likeRepo.find({ where: { userId: viewerId, postId: In(postIds) } }),
+      this.repostRepo.find({ where: { userId: viewerId, postId: In(postIds) } }),
+    ]);
+    const likedSet = new Set(viewerLikes.map((l) => l.postId));
+    const repostedSet = new Set(viewerReposts.map((r) => r.postId));
+
+    return {
+      posts: posts.map((p) => this.shape(p, likedSet.has(p.id), repostedSet.has(p.id))),
+      nextCursor: hasNextPage ? posts[posts.length - 1].createdAt.toISOString() : null,
+      hasNextPage,
+    };
   }
 
   // ── Single post ─────────────────────────────────────────────────────────────
 
-  async findById(postId: string, viewerId?: string): Promise<FeedPost> {
+  async findById(postId: string, viewerId?: string) {
     const post = await this.postRepo
       .createQueryBuilder('post')
       .leftJoinAndSelect('post.author', 'author')
       .leftJoinAndSelect('post.hub', 'hub')
-      .leftJoinAndSelect('post.media', 'media')
       .where('post.id = :id', { id: postId })
-      .andWhere('post.isDeleted = :deleted', { deleted: false })
       .getOne();
 
     if (!post) throw new NotFoundException('Post not found');
 
-    await this.postRepo.increment({ id: postId }, 'viewCount', 1);
-
     let liked = false;
+    let reposted = false;
     if (viewerId) {
-      const like = await this.likeRepo.findOne({ where: { userId: viewerId, postId } });
+      const [like, repost] = await Promise.all([
+        this.likeRepo.findOne({ where: { userId: viewerId, postId } }),
+        this.repostRepo.findOne({ where: { userId: viewerId, postId } }),
+      ]);
       liked = !!like;
+      reposted = !!repost;
     }
 
-    const topComments = await this.commentRepo.find({
-      where: { postId, isDeleted: false },
-      relations: ['author'],
-      order: { likeCount: 'DESC', createdAt: 'ASC' },
-      take: 3,
-    });
-
-    return this.shapePost(post, liked, topComments);
+    return this.shape(post, liked, reposted);
   }
 
   // ── Like / unlike ───────────────────────────────────────────────────────────
 
-  async toggleLike(
-    postId: string,
-    userId: string,
-  ): Promise<{ liked: boolean; likeCount: number }> {
-    const post = await this.postRepo.findOne({ where: { id: postId, isDeleted: false } });
+  async toggleLike(postId: string, userId: string) {
+    const post = await this.postRepo.findOne({ where: { id: postId } });
     if (!post) throw new NotFoundException('Post not found');
 
     const existing = await this.likeRepo.findOne({ where: { userId, postId } });
 
     if (existing) {
       await this.likeRepo.remove(existing);
-      await this.postRepo.decrement({ id: postId }, 'likeCount', 1);
+      await this.postRepo.decrement({ id: postId }, 'likesCount', 1);
     } else {
       await this.likeRepo.save(this.likeRepo.create({ userId, postId }));
-      await this.postRepo.increment({ id: postId }, 'likeCount', 1);
+      await this.postRepo.increment({ id: postId }, 'likesCount', 1);
+      await this.notificationsService.create({
+        recipientId: post.userId,
+        actorId: userId,
+        type: 'post_like',
+        postId,
+      });
     }
 
     const updated = await this.postRepo.findOneOrFail({ where: { id: postId } });
-    return { liked: !existing, likeCount: updated.likeCount };
+    return { liked: !existing, likesCount: updated.likesCount };
+  }
+
+  // ── Repost / unrepost ───────────────────────────────────────────────────────
+
+  async toggleRepost(postId: string, userId: string) {
+    const post = await this.postRepo.findOne({ where: { id: postId } });
+    if (!post) throw new NotFoundException('Post not found');
+
+    const existing = await this.repostRepo.findOne({ where: { userId, postId } });
+
+    if (existing) {
+      await this.repostRepo.remove(existing);
+      await this.postRepo.decrement({ id: postId }, 'repostsCount', 1);
+    } else {
+      await this.repostRepo.save(this.repostRepo.create({ userId, postId }));
+      await this.postRepo.increment({ id: postId }, 'repostsCount', 1);
+      await this.notificationsService.create({
+        recipientId: post.userId,
+        actorId: userId,
+        type: 'post_repost',
+        postId,
+      });
+    }
+
+    const updated = await this.postRepo.findOneOrFail({ where: { id: postId } });
+    return { reposted: !existing, repostsCount: updated.repostsCount };
   }
 
   // ── Delete ──────────────────────────────────────────────────────────────────
@@ -339,6 +301,68 @@ export class PostsService {
     if (post.userId !== requesterId) {
       throw new ForbiddenException('You can only delete your own posts');
     }
-    await this.postRepo.update(postId, { isDeleted: true });
+    await this.postRepo.remove(post);
+    await this.hubRepo.decrement({ id: post.hubId }, 'postsCount', 1);
+  }
+
+  // ── Shape helper ─────────────────────────────────────────────────────────────
+
+  private shape(
+    post: Post,
+    likedByMe: boolean,
+    repostedByMe: boolean,
+    topComments: Comment[] = [],
+  ) {
+    return {
+      id: post.id,
+      userId: post.userId,
+      hubId: post.hubId,
+      title: post.title,
+      body: post.body,
+      mediaType: post.mediaType,
+      imageUrl: post.imageUrl,
+      videoUrl: post.videoUrl,
+      videoThumbnailUrl: post.videoThumbnailUrl,
+      videoDurationSecs: post.videoDurationSecs,
+      hasSpoiler: post.hasSpoiler,
+      likesCount: post.likesCount,
+      repostsCount: post.repostsCount,
+      commentsCount: post.commentsCount,
+      createdAt: post.createdAt,
+      updatedAt: post.updatedAt,
+      likedByMe,
+      repostedByMe,
+      author: post.author
+        ? {
+            id: post.author.id,
+            username: post.author.username,
+            displayName: post.author.displayName,
+            avatarUrl: post.author.avatarUrl ?? null,
+          }
+        : null,
+      hub: post.hub
+        ? {
+            id: post.hub.id,
+            name: post.hub.name,
+            iconUrl: post.hub.iconUrl,
+            type: post.hub.type,
+            genres: post.hub.genres,
+          }
+        : null,
+      topComments: topComments.map((c) => ({
+        id: c.id,
+        body: c.body,
+        likesCount: c.likesCount,
+        createdAt: c.createdAt,
+        author: c.author
+          ? {
+              id: c.author.id,
+              username: c.author.username,
+              displayName: c.author.displayName,
+              avatarUrl: c.author.avatarUrl ?? null,
+            }
+          : null,
+      })),
+    };
   }
 }

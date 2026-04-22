@@ -6,10 +6,11 @@ import { UsersModule } from './users/users.module';
 import { HubsModule } from './hubs/hubs.module';
 import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
+import { ListsModule } from './lists/lists.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
   imports: [
-    // Load .env first so every other module can read from ConfigService
     ConfigModule.forRoot({ isGlobal: true }),
 
     TypeOrmModule.forRootAsync({
@@ -28,6 +29,8 @@ import { CommentsModule } from './comments/comments.module';
     HubsModule,
     PostsModule,
     CommentsModule,
+    ListsModule,
+    NotificationsModule,
   ],
 })
 export class AppModule {}

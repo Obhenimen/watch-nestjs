@@ -46,8 +46,13 @@ lerna-debug.log*
 .temp
 .tmp
 
-# SQLite
-/data/
+# SQLite — commit the DB file so everyone shares the same seed data,
+# but keep WAL/SHM sidecars (transient, regenerated at runtime) out of git.
+/data/*
+!/data/watchcue.sqlite
+/data/*.sqlite-shm
+/data/*.sqlite-wal
+/data/*.sqlite-journal
 
 # Runtime data
 pids

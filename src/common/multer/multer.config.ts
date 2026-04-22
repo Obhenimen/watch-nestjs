@@ -5,9 +5,11 @@ import { mkdirSync } from 'fs';
 import type { Request } from 'express';
 
 const UPLOAD_ROOT = join(process.cwd(), 'uploads', 'posts');
+const AVATAR_UPLOAD_ROOT = join(process.cwd(), 'uploads', 'avatars');
 
-// Ensure the directory exists at startup
+// Ensure the directories exist at startup
 mkdirSync(UPLOAD_ROOT, { recursive: true });
+mkdirSync(AVATAR_UPLOAD_ROOT, { recursive: true });
 
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
 const ALLOWED_VIDEO_TYPES = ['video/mp4', 'video/quicktime', 'video/x-msvideo', 'video/webm'];
@@ -50,6 +52,46 @@ export const postMediaMulterOptions = {
 /** Build the server-relative URL stored in PostMedia.url */
 export function mediaUrl(filename: string): string {
   return `/uploads/posts/${filename}`;
+}
+
+/** Avatar uploads — smaller limit, images only, stored at /uploads/avatars/<file>. */
+export const avatarMulterOptions = {
+  storage: diskStorage({
+    destination: AVATAR_UPLOAD_ROOT,
+    filename: (
+      _req: Request,
+      file: Express.Multer.File,
+      cb: (err: Error | null, filename: string) => void,
+    ) => {
+      const unique = `${Date.now()}-${Math.round(Math.random() * 1e6)}`;
+      cb(null, `${unique}${extname(file.originalname)}`);
+    },
+  }),
+
+  fileFilter: (
+    _req: Request,
+    file: Express.Multer.File,
+    cb: (err: Error | null, accept: boolean) => void,
+  ) => {
+    if (!ALLOWED_IMAGE_TYPES.includes(file.mimetype)) {
+      return cb(
+        new BadRequestException(
+          `Unsupported avatar format "${file.mimetype}". Use JPEG, PNG, GIF, or WEBP.`,
+        ),
+        false,
+      );
+    }
+    cb(null, true);
+  },
+
+  limits: {
+    files: 1,
+    fileSize: MAX_IMAGE_BYTES,
+  },
+};
+
+export function avatarUrl(filename: string): string {
+  return `/uploads/avatars/${filename}`;
 }
 
 export function isImage(mimetype: string): boolean {

@@ -1,0 +1,3 @@
+ - Email: harper_watch@watchcue.dev                                                                                                                                   
+  - Password: SeedPass123!
+  - Username: harper_watch · Display name: Harper Watch    

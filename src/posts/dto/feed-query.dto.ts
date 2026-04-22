@@ -1,4 +1,4 @@
-import { IsOptional, IsInt, Min, Max } from 'class-validator';
+import { IsOptional, IsInt, Min, Max, IsString } from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class FeedQueryDto {
@@ -10,8 +10,6 @@ export class FeedQueryDto {
   limit?: number = 20;
 
   @IsOptional()
-  @IsInt()
-  @Min(0)
-  @Transform(({ value }: { value: unknown }) => (value ? parseInt(String(value), 10) : 0))
-  offset?: number = 0;
+  @IsString()
+  cursor?: string;
 }
