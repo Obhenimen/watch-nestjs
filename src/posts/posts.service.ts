@@ -16,6 +16,7 @@ import { Comment } from '../comments/entities/comment.entity';
 import { NotificationsService } from '../notifications/notifications.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
+import { FeedRankingService } from './feed-ranking.service';
 import { isImage, isVideo, MAX_IMAGE_SIZE, mediaUrl } from '../common/multer/multer.config';
 
 @Injectable()
@@ -40,6 +41,7 @@ export class PostsService {
     private readonly commentRepo: Repository<Comment>,
 
     private readonly notificationsService: NotificationsService,
+    private readonly feedRanking: FeedRankingService,
   ) {}
 
   // ── Create ──────────────────────────────────────────────────────────────────
@@ -82,37 +84,20 @@ export class PostsService {
     return this.findById(post.id, author.id);
   }
 
-  // ── Feed (cursor-based, from followed hubs) ─────────────────────────────────
-
+  // ── For You feed (personalised, ranked) ─────────────────────────────────────
+  //
+  // Cursor here is an offset into the ranked candidate pool, encoded as a string
+  // so the public DTO doesn't change. Candidates are regenerated each request,
+  // so a refresh always reflects the latest engagement signals; the offset only
+  // controls "load more" within a single browsing session. See FOR_YOU_FEED.md
+  // for the full algorithm.
   async getFeed(viewer: User, query: FeedQueryDto) {
     const { limit = 20, cursor } = query;
+    const offset = cursor ? Math.max(0, parseInt(cursor, 10) || 0) : 0;
 
-    const followedHubs = await this.hubFollowRepo.find({
-      where: { userId: viewer.id },
-      select: ['hubId'],
-    });
-
-    if (!followedHubs.length) {
-      return { posts: [], nextCursor: null, hasNextPage: false };
-    }
-
-    const hubIds = followedHubs.map((hf) => hf.hubId);
-
-    const qb = this.postRepo
-      .createQueryBuilder('post')
-      .leftJoinAndSelect('post.author', 'author')
-      .leftJoinAndSelect('post.hub', 'hub')
-      .where('post.hubId IN (:...hubIds)', { hubIds })
-      .orderBy('post.createdAt', 'DESC')
-      .take(limit + 1);
-
-    if (cursor) {
-      qb.andWhere('post.createdAt < :cursor', { cursor });
-    }
-
-    const rows = await qb.getMany();
-    const hasNextPage = rows.length > limit;
-    const posts = hasNextPage ? rows.slice(0, limit) : rows;
+    const { posts: rankedPosts } = await this.feedRanking.rank(viewer.id, limit + 1, offset);
+    const hasNextPage = rankedPosts.length > limit;
+    const posts = hasNextPage ? rankedPosts.slice(0, limit) : rankedPosts;
 
     if (!posts.length) return { posts: [], nextCursor: null, hasNextPage: false };
 
@@ -150,7 +135,7 @@ export class PostsService {
           topCommentsByPost.get(p.id) ?? [],
         ),
       ),
-      nextCursor: hasNextPage ? posts[posts.length - 1].createdAt.toISOString() : null,
+      nextCursor: hasNextPage ? String(offset + limit) : null,
       hasNextPage,
     };
   }

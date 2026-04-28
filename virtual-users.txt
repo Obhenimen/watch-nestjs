@@ -1,0 +1,20 @@
+WatchCue — Virtual Users
+========================
+
+These accounts were created by scripts/seed-virtual-users.ts to demonstrate
+the For You feed personalising recommendations to a user’s taste profile.
+
+User: Action Fan — Heroic / action / superhero (Batman, Superman, action)
+  Username: action_fan
+  Email:    marcus.weller92@gmail.com
+  Password: ActionFan!2026
+
+User: Romance Reader — Romance
+  Username: romance_reader
+  Email:    emma.t.callahan@outlook.com
+  Password: RomanceReader!2026
+
+User: Real Life Lover — Based on real life (history / biopic / documentary)
+  Username: real_life_lover
+  Email:    jordan.hayes.films@gmail.com
+  Password: RealLife!2026
