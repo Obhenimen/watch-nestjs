@@ -27,6 +27,10 @@ import { PasswordResetToken } from '../src/auth/entities/password-reset-token.en
 
 const POSTS_PER_USER = 30;
 const SPOILER_RATIO = 0.3;
+// Spread post timestamps across this many days so the 30 posts per user don't
+// all hit the freshness curve at the same moment — otherwise a clustered seed
+// of new posts can outscore older community content via freshness alone.
+const TIMESTAMP_SPREAD_DAYS = 14;
 
 interface Template {
   title: string;
@@ -155,6 +159,24 @@ function pickImage(hub: Hub): string | null {
   return hub.backdropUrl ?? hub.iconUrl ?? null;
 }
 
+// Match TypeORM's better-sqlite3 datetime format ("YYYY-MM-DD HH:MM:SS.sss")
+// so raw UPDATEs against `created_at` compare correctly with later reads.
+function formatSqliteDate(d: Date): string {
+  const pad = (n: number, w = 2) => String(n).padStart(w, '0');
+  return (
+    `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ` +
+    `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}.${pad(d.getMilliseconds(), 3)}`
+  );
+}
+
+function randomBackdate(): Date {
+  const ageMs =
+    rndInt(0, TIMESTAMP_SPREAD_DAYS) * 86400000 +
+    rndInt(0, 23) * 3600000 +
+    rndInt(0, 59) * 60000;
+  return new Date(Date.now() - ageMs);
+}
+
 async function main() {
   const ds = new DataSource({
     type: 'better-sqlite3',
@@ -217,6 +239,25 @@ async function main() {
       console.log(`• ${profile.username}: backfilled title/image on ${updated} existing post(s)`);
     }
 
+    // ── Spread timestamps: if this user's posts are clustered at the same
+    //    timestamp (e.g. all created in one seed run), redistribute them across
+    //    the last `TIMESTAMP_SPREAD_DAYS` days so freshness doesn't artificially
+    //    rank them all together.
+    const allPosts = await postRepo.find({ where: { userId: user.id } });
+    if (allPosts.length) {
+      const timestamps = allPosts.map((p) => new Date(p.createdAt).getTime());
+      const min = Math.min(...timestamps);
+      const max = Math.max(...timestamps);
+      const clustered = max - min < 2 * 3600 * 1000; // less than 2 hours apart
+      if (clustered) {
+        for (const p of allPosts) {
+          const newDate = formatSqliteDate(randomBackdate());
+          await ds.query(`UPDATE posts SET created_at = ? WHERE id = ?`, [newDate, p.id]);
+        }
+        console.log(`• ${profile.username}: spread ${allPosts.length} post timestamps across ${TIMESTAMP_SPREAD_DAYS} days`);
+      }
+    }
+
     // ── Top-up to POSTS_PER_USER if necessary.
     const existing = await postRepo.count({ where: { userId: user.id } });
     if (existing >= POSTS_PER_USER) {
@@ -265,7 +306,14 @@ async function main() {
         repostsCount: rndInt(0, 4),
         commentsCount: rndInt(0, 6),
       });
-      await postRepo.save(post);
+      const saved = await postRepo.save(post);
+      // CreateDateColumn auto-fills, so we override after insert. Spread across
+      // 14 days so freshness scoring sees realistic post-cadence rather than
+      // a flash flood of new content.
+      await ds.query(`UPDATE posts SET created_at = ? WHERE id = ?`, [
+        formatSqliteDate(randomBackdate()),
+        saved.id,
+      ]);
       await hubRepo.increment({ id: hub.id }, 'postsCount', 1);
     }
 

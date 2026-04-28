@@ -92,11 +92,23 @@ post in the database — that would be O(N) per request and won't scale.
 | --------------------- | ------- | --- | ------------------------------------------------- |
 | Interested hubs       | 30 days | 150 | Posts in any followed / favourite / watchlist / watched hub |
 | Followed authors      | 30 days |  80 | Posts by any user the viewer follows              |
-| In-profile trending   | 14 days |  60 | Top posts by `likes×3 + reposts×2 + comments`, **restricted to the viewer's interested hubs** when they have a profile — falls back to unfiltered trending only on cold start |
+| Globally trending     | 14 days |  60 | Top posts by `likes×3 + reposts×2 + comments`, no hub restriction |
+| Broad recent          | 30 days | 200 | Most recent posts globally — provides the long tail so endless scroll keeps producing content after the personalised pool is exhausted |
 
-If all three pools come up empty (a brand-new user when the community is
-quiet), we fall back to the 60 most recent posts so the feed is never empty.
-This is the **cold start** path.
+If all four pools come up empty (a brand-new install with no posts in the
+last 30 days), we fall back to the 60 most recent posts ever, no time
+filter. This is the **cold start** path.
+
+The two pools work together to give the feed the right shape:
+
+- **Personalised top** — pools 1, 2 and the in-profile portion of pool 3
+  fill the top of the ranking (high affinity ⇒ high floor).
+- **Discovery tail** — pool 4 (broad recent) provides hundreds more
+  candidates that all sit in the small-floor bucket, so they rank below
+  personalised content but are *available* once the user scrolls past it.
+  This is what makes endless scroll work: a `romance_reader` with only ~30
+  in-profile posts can still scroll to ~250 posts before the pool runs out,
+  and the lower-ranked posts are general discovery rather than nothing.
 
 ### 3.3 Scoring
 
@@ -155,9 +167,19 @@ single session.
 For each candidate post:
 
 ```
-score = (affinity + 0.5) × engagement × freshness  +  authorBoost
+score = (affinity + floor) × engagement × freshness  +  matchBonus  +  authorBoost
 score = score × spoilerPenalty
+
+where:
+  floor      = 0.5 if any explicit match, 0.05 otherwise
+  matchBonus = 5.0 if any explicit match, 0   otherwise
 ```
+
+The `matchBonus` is a flat additive — it doesn't get multiplied with
+engagement or freshness. That's deliberate: a 10-day-old in-hub post with
+freshness 0.04 has multiplicative score ≈ 0.1, which a fresh off-hub viral
+post can easily beat. With the flat +5, the in-hub post's floor is 5+
+regardless of age, so it can't be displaced by engagement alone.
 
 ### Affinity — *does this viewer care about this hub or author?*
 
@@ -217,11 +239,14 @@ crush everything else.
 ### Freshness — *is this post recent?*
 
 ```
-freshness = exp(-ageHours / 36)
+freshness = exp(-ageHours / 72)
 ```
 
-Half-life of ~25 hours (because `e^(-24/36) ≈ 0.51`). A 1-day-old post is
-worth half as much as a brand-new one; a 3-day-old post is worth ~13%.
+Half-life of ~50 hours. A 1-day-old post is worth ~72%, a 3-day-old post
+~37%, a week-old post ~10%. The half-life is generous for a movie-talk
+community where threads extend over days; with the previous 36-hour
+half-life, freshness dominated affinity hard enough that newer off-hub
+posts could outrank older in-hub content.
 
 ### Author boost
 
@@ -251,8 +276,9 @@ All weights live as `const W = { ... }` at the top of
 | Knob                         | Default | Effect of raising                                   |
 | ---------------------------- | ------- | --------------------------------------------------- |
 | `freshnessHalfLifeHours`     | 36      | Older posts survive longer (good for slow communities) |
-| `affinityFloor`              | 0.5     | Floor for posts that match the viewer in any way    |
-| `affinityFloorNoMatch`       | 0.05    | Floor for zero-match posts; raise → more serendipity / off-genre virality |
+| `affinityFloor`              | 0.5     | Tie-breaking floor for matched posts                |
+| `affinityFloorNoMatch`       | 0.05    | Tie-breaking floor for zero-match posts             |
+| `affinityMatchBonus`         | 5.0     | Flat additive bonus for explicit matches; this is what guarantees in-hub posts beat off-hub virality across age/engagement variation |
 | `engagementLike` etc.        | 3/2/1.5 | Re-weight like vs repost vs comment                 |
 | `diversityHubDecay`          | 0.6     | Stronger penalty → more variety, fewer repeat hubs  |
 | `poolGloballyTrending`       | 60      | Larger trending pool → more discovery, slower request |

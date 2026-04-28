@@ -98,17 +98,15 @@ describe('FeedRankingService', () => {
   });
 
   describe('personalisation', () => {
-    it('surfaces a post from the favourite hub even when it has zero engagement', async () => {
+    it('ranks a post from the favourite hub above an unrelated post even when both have zero engagement', async () => {
       // This guards the `1 + log(1+x)` baseline — with the bare `log(1+x)` form,
       // engagement would be 0 and the whole product would collapse, so affinity
-      // wouldn't matter and the post wouldn't rank.
+      // wouldn't matter.
       const author = await makeUser(userRepo);
       const lovedHub = await makeHub(hubRepo, { name: 'Loved' });
       const unrelatedHub = await makeHub(hubRepo, { name: 'Unrelated' });
 
       const lovedPost = await makePost(postRepo, author, lovedHub, { body: 'about loved' });
-      // Off-hub post with no engagement — under the new pool restriction it's
-      // simply not a candidate, which is the right behaviour.
       const unrelatedPost = await makePost(postRepo, author, unrelatedHub, { body: 'about other' });
 
       const viewer = await makeUser(userRepo);
@@ -118,8 +116,11 @@ describe('FeedRankingService', () => {
       await listItemRepo.save(listItemRepo.create({ listId: favoritesList.id, hubId: lovedHub.id }));
 
       const { posts } = await service.rank(viewer.id, 10, 0);
-      expect(posts.find((p) => p.id === lovedPost.id)).toBeDefined();
-      expect(posts.find((p) => p.id === unrelatedPost.id)).toBeUndefined();
+      const lovedIdx = posts.findIndex((p) => p.id === lovedPost.id);
+      const unrelatedIdx = posts.findIndex((p) => p.id === unrelatedPost.id);
+      expect(lovedIdx).toBeGreaterThanOrEqual(0);
+      expect(unrelatedIdx).toBeGreaterThanOrEqual(0);
+      expect(lovedIdx).toBeLessThan(unrelatedIdx);
     });
 
     it('two viewers with different profiles see different feeds', async () => {
@@ -165,7 +166,7 @@ describe('FeedRankingService', () => {
   });
 
   describe('off-genre virality does not outrank personalised content', () => {
-    it('an off-hub viral post is not a candidate when the viewer has a profile', async () => {
+    it('a high-engagement off-hub post ranks below a lower-engagement on-hub post', async () => {
       const author = await makeUser(userRepo);
       const actionHub = await makeHub(hubRepo, { name: 'Action Hub', genres: 'Action, Adventure' });
       const offGenreHub = await makeHub(hubRepo, { name: 'Comedy Hub', genres: 'Comedy, Talk' });
@@ -180,8 +181,11 @@ describe('FeedRankingService', () => {
       await listItemRepo.save(listItemRepo.create({ listId: favorites.id, hubId: actionHub.id }));
 
       const { posts } = await service.rank(viewer.id, 10, 0);
-      expect(posts.find((p) => p.id === onGenrePost.id)).toBeDefined();
-      expect(posts.find((p) => p.id === offGenreViralPost.id)).toBeUndefined();
+      const onIdx = posts.findIndex((p) => p.id === onGenrePost.id);
+      const offIdx = posts.findIndex((p) => p.id === offGenreViralPost.id);
+      expect(onIdx).toBeGreaterThanOrEqual(0);
+      expect(offIdx).toBeGreaterThanOrEqual(0);
+      expect(onIdx).toBeLessThan(offIdx);
     });
 
     it('a circumstantial genre overlap with a TV-format tag does not promote a viral off-hub post', async () => {
@@ -190,7 +194,9 @@ describe('FeedRankingService', () => {
       // tagged "Sci-Fi & Fantasy" got affinity ~0.08 from that single overlap,
       // which under the affinity-only floor split lifted it into the same
       // generous floor as posts in hubs the viewer actually followed.
-      // Belt-and-braces fix: explicit-only floor + trending-pool restriction.
+      // The explicit-only floor (genre overlap doesn't count) is what fixes
+      // this: the off-hub post is still in the candidate pool (broad recent),
+      // but it ranks below in-hub content.
       const author = await makeUser(userRepo);
       const followedHub = await makeHub(hubRepo, { name: 'Followed', genres: 'Action, Adventure' });
       const tvHub = await makeHub(hubRepo, { name: 'TV Show', genres: 'Sci-Fi & Fantasy, Action' });
@@ -204,30 +210,55 @@ describe('FeedRankingService', () => {
       await hubFollowRepo.save(hubFollowRepo.create({ userId: viewer.id, hubId: tvHub.id }));
 
       const { posts } = await service.rank(viewer.id, 10, 0);
-      expect(posts.find((p) => p.id === inHubLowEng.id)).toBeDefined();
-      expect(posts.find((p) => p.id === offViralPost.id)).toBeUndefined();
+      const inIdx = posts.findIndex((p) => p.id === inHubLowEng.id);
+      const offIdx = posts.findIndex((p) => p.id === offViralPost.id);
+      expect(inIdx).toBeGreaterThanOrEqual(0);
+      expect(offIdx).toBeGreaterThanOrEqual(0);
+      expect(inIdx).toBeLessThan(offIdx);
     });
 
-    it('an off-hub viral post does not appear via the trending pool when the viewer has a profile', async () => {
-      // Even when a viewer's interested-hubs pool is small, a high-engagement
-      // viral post in a hub the viewer has shown ZERO interest in should not
-      // muscle in via global trending. (Cold-start users still get unfiltered
-      // trending — covered by the cold-start tests above.)
+    it('a viral off-hub post is in the candidate pool but ranks below an in-hub post', async () => {
+      // Endless scroll requires the long tail of off-hub content to be a
+      // candidate. The split-floor logic keeps it from outranking the
+      // personalised top — that's how the feed ends up "personalised first,
+      // then discovery" rather than "personalised then nothing".
       const author = await makeUser(userRepo);
       const followedHub = await makeHub(hubRepo);
       const offHub = await makeHub(hubRepo);
 
-      // Just one in-hub post — interesting tail slots will need filling.
       const inHubPost = await makePost(postRepo, author, followedHub, { likesCount: 1 });
-      // A globally viral off-hub post.
       const viralOffHubPost = await makePost(postRepo, author, offHub, { likesCount: 100 });
 
       const viewer = await makeUser(userRepo);
       await hubFollowRepo.save(hubFollowRepo.create({ userId: viewer.id, hubId: followedHub.id }));
 
-      const { posts } = await service.rank(viewer.id, 10, 0);
-      expect(posts.find((p) => p.id === inHubPost.id)).toBeDefined();
-      expect(posts.find((p) => p.id === viralOffHubPost.id)).toBeUndefined();
+      // Ask for enough slots that the broad-recent post is sure to surface.
+      const { posts } = await service.rank(viewer.id, 50, 0);
+      const inIdx = posts.findIndex((p) => p.id === inHubPost.id);
+      const offIdx = posts.findIndex((p) => p.id === viralOffHubPost.id);
+      expect(inIdx).toBeGreaterThanOrEqual(0);
+      expect(offIdx).toBeGreaterThanOrEqual(0);
+      expect(inIdx).toBeLessThan(offIdx);
+    });
+
+    it('produces a long tail of candidates so endless scroll keeps yielding posts', async () => {
+      const author = await makeUser(userRepo);
+      const followedHub = await makeHub(hubRepo);
+      // Just 5 posts in the user's followed hub.
+      for (let i = 0; i < 5; i++) {
+        await makePost(postRepo, author, followedHub, { likesCount: i });
+      }
+      // 60 posts across many off-hub locations — these supply the tail.
+      for (let i = 0; i < 60; i++) {
+        const h = await makeHub(hubRepo);
+        await makePost(postRepo, author, h, { likesCount: 0 });
+      }
+
+      const viewer = await makeUser(userRepo);
+      await hubFollowRepo.save(hubFollowRepo.create({ userId: viewer.id, hubId: followedHub.id }));
+
+      const { totalCandidates } = await service.rank(viewer.id, 10, 0);
+      expect(totalCandidates).toBeGreaterThan(50);
     });
 
     it('still ranks off-genre posts among themselves by engagement (cold-start path)', async () => {

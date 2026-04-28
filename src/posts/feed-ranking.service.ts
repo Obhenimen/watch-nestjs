@@ -37,10 +37,11 @@ const W = {
   affinityGenre: 0.2,
   affinityFloor: 0.5,
   affinityFloorNoMatch: 0.05,
+  affinityMatchBonus: 5.0,
   engagementLike: 3,
   engagementRepost: 2,
   engagementComment: 1.5,
-  freshnessHalfLifeHours: 36,
+  freshnessHalfLifeHours: 72,
   authorBoost: 0.1,
   spoilerPenaltyUnwatched: 0.85,
   spoilerQuotaFirstPage: 3,
@@ -51,6 +52,7 @@ const W = {
   poolInterestedHubs: 150,
   poolFollowedUsers: 80,
   poolGloballyTrending: 60,
+  poolBroadRecent: 200,
   poolColdStart: 60,
 };
 
@@ -262,23 +264,18 @@ export class FeedRankingService {
     }
 
     {
-      // Trending pool: top-engagement posts in the last `trendingWindowDays`.
-      // For users with a defined profile this pool is RESTRICTED to their
-      // interested hubs — global discovery belongs in the Hubs page, not the
-      // For You feed, and unfiltered trending was injecting off-genre virality
-      // (e.g. a comedy hit appearing on an action fan's feed). Cold-start
-      // users (no interested hubs yet) keep the unfiltered query.
-      const trendingQb = this.postRepo
-        .createQueryBuilder('post')
-        .leftJoinAndSelect('post.author', 'author')
-        .leftJoinAndSelect('post.hub', 'hub')
-        .where('post.createdAt >= :since', { since: trendingSince });
-      if (interestedHubIds.size > 0) {
-        trendingQb.andWhere('post.hubId IN (:...trendingHubIds)', {
-          trendingHubIds: [...interestedHubIds],
-        });
-      }
-      const rows = await excludeSelf(trendingQb)
+      // Globally trending pool — top engagement-scored posts in the last
+      // `trendingWindowDays`, no hub restriction. The split affinity floor
+      // (explicit match → 0.5, no match → 0.05) is what keeps these from
+      // muscling above personalised content; we don't need to pre-filter the
+      // pool any more.
+      const rows = await excludeSelf(
+        this.postRepo
+          .createQueryBuilder('post')
+          .leftJoinAndSelect('post.author', 'author')
+          .leftJoinAndSelect('post.hub', 'hub')
+          .where('post.createdAt >= :since', { since: trendingSince }),
+      )
         .addSelect('(post.likes_count * 3 + post.reposts_count * 2 + post.comments_count)', 'score')
         .orderBy('score', 'DESC')
         .addOrderBy('post.createdAt', 'DESC')
@@ -287,8 +284,27 @@ export class FeedRankingService {
       absorb(rows);
     }
 
-    // Cold start: brand-new user, or community has been quiet for the windows above.
-    // Fall back to the most recent posts so the feed is never empty.
+    {
+      // Broad-recent pool — supplies the long tail so the feed supports
+      // endless scroll. Without this, a viewer with a small interested-hubs
+      // profile would hit "all caught up" after a few pages. These posts get
+      // the small floor (no explicit match), so they only surface once the
+      // user has scrolled past their personalised content.
+      const rows = await excludeSelf(
+        this.postRepo
+          .createQueryBuilder('post')
+          .leftJoinAndSelect('post.author', 'author')
+          .leftJoinAndSelect('post.hub', 'hub')
+          .where('post.createdAt >= :since', { since }),
+      )
+        .orderBy('post.createdAt', 'DESC')
+        .take(W.poolBroadRecent)
+        .getMany();
+      absorb(rows);
+    }
+
+    // Cold start: literally no posts in the last 30 days. Fall through to the
+    // most recent posts ever so the feed is never empty.
     if (!out.length) {
       const rows = await excludeSelf(
         this.postRepo
@@ -372,12 +388,15 @@ export class FeedRankingService {
     const spoilerPenalty =
       post.hasSpoiler && !profile.watchedHubs.has(post.hubId) ? W.spoilerPenaltyUnwatched : 1.0;
 
-    // Floor depends on *explicit* match only. Posts the viewer hasn't shown
-    // direct interest in (regardless of incidental genre overlap) get the
-    // small floor — they only surface when engagement and freshness can carry
-    // them on their own.
+    // Floor controls tie-breaking among unmatched posts (so they rank against
+    // each other by engagement × freshness, not all collapse to score = 0).
+    // The match BONUS is the load-bearing piece: a flat +5 added to explicitly
+    // matched posts so a day-old fresh off-hub viral post (which the
+    // multiplicative form alone treats as score ≈ engagement) cannot outrank a
+    // 10-day-old low-engagement in-hub post (multiplicative score ≈ 0.1).
     const floor = hasExplicitMatch ? W.affinityFloor : W.affinityFloorNoMatch;
-    const base = (affinity + floor) * engagement * freshness;
+    const matchBonus = hasExplicitMatch ? W.affinityMatchBonus : 0;
+    const base = (affinity + floor) * engagement * freshness + matchBonus;
     return (base + authorBoost) * spoilerPenalty;
   }
 
