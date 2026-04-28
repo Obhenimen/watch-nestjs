@@ -24,6 +24,9 @@
     "db:populate-posts": "node scripts/seed-more-posts.mjs",
     "db:populate-lists": "node scripts/seed-list-items.mjs",
     "db:populate-notifications": "node scripts/seed-notifications.mjs",
+    "db:virtual-users": "ts-node -T scripts/seed-virtual-users.ts",
+    "db:virtual-posts": "ts-node -T scripts/seed-virtual-user-posts.ts",
+    "db:checkpoint": "sqlite3 ./data/watchcue.sqlite 'PRAGMA wal_checkpoint(TRUNCATE);'",
     "trailers:remux": "bash scripts/remux-trailers.sh",
     "trailers:download": "bash scripts/download-trailers.sh"
   },
